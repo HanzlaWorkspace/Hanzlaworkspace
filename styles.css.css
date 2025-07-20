@@ -1,0 +1,13 @@
+/* Dark mode styles */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --header-bg: rgba(30, 30, 30, 0.95);
+    --footer-bg: #121212;
+    --section-bg: #1e1e1e;
+    --light-section-bg: #2d2d2d;
+    --dark-section-bg: linear-gradient(135deg, #0a081f, #201d4e, #181732);
+    --gray-color: #b0b0b0; /* Updated for better contrast */
+    --light-gray: #333333; /* Updated for dark mode */
+}
