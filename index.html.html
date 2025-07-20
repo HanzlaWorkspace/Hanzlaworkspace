@@ -19,8 +19,28 @@
             --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             --border-radius: 8px;
             --neon-glow: 0 0 10px rgba(108, 99, 255, 0.8), 0 0 20px rgba(108, 99, 255, 0.6), 0 0 30px rgba(108, 99, 255, 0.4);
-            --card-bg: #ffffff;
+            
+            /* Dark mode variables - initially empty */
+            --bg-color: #ffffff;
             --text-color: #2d2d2d;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: #2d2d2d;
+            --section-bg: #ffffff;
+            --light-section-bg: #f8f9fa;
+            --dark-section-bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #f8f9fa;
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --footer-bg: #121212;
+            --section-bg: #1e1e1e;
+            --light-section-bg: #2d2d2d;
+            --dark-section-bg: linear-gradient(135deg, #0a081f, #201d4e, #181732);
         }
 
         * {
@@ -36,9 +56,10 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--dark-color);
-            background-color: #fff;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -50,16 +71,20 @@
 
         section {
             padding: 80px 0;
+            background-color: var(--section-bg);
+            transition: background-color 0.3s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 15px;
+            color: var(--text-color);
         }
 
         p {
             margin-bottom: 15px;
+            color: var(--text-color);
         }
 
         a {
@@ -161,13 +186,13 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: var(--header-bg);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: var(--header-bg);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             padding: 10px 0;
         }
@@ -182,7 +207,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--text-color);
             position: relative;
         }
 
@@ -220,6 +245,7 @@
         nav ul li a {
             font-weight: 500;
             position: relative;
+            color: var(--text-color);
         }
 
         nav ul li a::after {
@@ -244,10 +270,49 @@
             color: var(--primary-color);
         }
 
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            margin-right: 8px;
+            color: var(--text-color);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        body.dark-mode .toggle-switch::before {
+            transform: translateX(26px);
+        }
+
         /* Hero Section */
         .hero {
             padding: 180px 0 100px;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: var(--dark-section-bg);
             position: relative;
             overflow: hidden;
         }
@@ -377,7 +442,7 @@
         }
 
         .service-card {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
@@ -398,7 +463,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transition: var(--transition);
             transform: scaleX(0);
-            transform-origin: left;
+            transform-origin: right;
         }
 
         .service-card:hover::before {
@@ -456,7 +521,7 @@
 
         /* Portfolio Section */
         .portfolio {
-            background-color: var(--light-color);
+            background-color: var(--light-section-bg);
             position: relative;
         }
 
@@ -490,6 +555,7 @@
             font-weight: 500;
             position: relative;
             overflow: hidden;
+            color: var(--text-color);
         }
 
         .filter-btn::before {
@@ -716,7 +782,7 @@
 
         /* Website Design Projects Section */
         .website-projects {
-            background: linear-gradient(135deg, #0f0c29, #302b63);
+            background: var(--dark-section-bg);
             color: white;
         }
 
@@ -771,7 +837,7 @@
 
         /* Testimonials Section */
         .testimonials {
-            background-color: var(--light-color);
+            background-color: var(--light-section-bg);
             position: relative;
         }
 
@@ -803,7 +869,7 @@
         }
 
         .testimonial-content {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 40px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
@@ -957,7 +1023,7 @@
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 20px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
@@ -996,7 +1062,7 @@
             justify-content: center;
             font-size: 1.2rem;
             transition: var(--transition);
-            color: var(--dark-color);
+            color: var(--text-color);
         }
 
         .social-links a:hover {
@@ -1018,7 +1084,7 @@
 
         .contact-form {
             flex: 1;
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 40px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
@@ -1041,6 +1107,8 @@
             border-radius: var(--border-radius);
             font-family: inherit;
             transition: var(--transition);
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
 
         .form-group input:focus,
@@ -1057,7 +1125,7 @@
 
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--footer-bg);
             color: white;
             padding: 80px 0 0;
             position: relative;
@@ -1142,6 +1210,12 @@
             border: none;
             border-radius: var(--border-radius) 0 0 var(--border-radius);
             font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .footer-newsletter button {
@@ -1419,7 +1493,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background-color: white;
+                background-color: var(--card-bg);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -1463,11 +1537,6 @@
                 bottom: -10px;
                 right: -10px;
             }
-
-            .chatbot-window {
-                width: 300px;
-                height: 450px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -1509,8 +1578,8 @@
             }
 
             .chatbot-window {
-                width: 280px;
-                height: 400px;
+                width: 300px;
+                height: 450px;
             }
         }
     </style>
@@ -1533,6 +1602,10 @@
                     <i class="fas fa-bars"></i>
                 </div>
             </nav>
+            <div class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon toggle-icon"></i>
+                <div class="toggle-switch"></div>
+            </div>
         </div>
     </header>
 
@@ -1899,7 +1972,7 @@
             <div class="testimonial-slider">
                 <div class="testimonial-slide active">
                     <div class="testimonial-content">
-                        <p>"Hanni Coditz created an amazing set of thumbnails for my YouTube channel. My CTR increased by 40% and I've gained thousands of new subscribers since using their designs!"</p>
+                        <p>"Alex created an amazing set of thumbnails for my YouTube channel. My CTR increased by 40% and I've gained thousands of new subscribers since using their designs!"</p>
                         <div class="client-info">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/038/962/461/small/ai-generated-caucasian-successful-confident-young-businesswoman-ceo-boss-bank-employee-worker-manager-with-arms-crossed-in-formal-wear-isolated-in-white-background-photo.jpg" alt="Client Photo">
                             <div>
@@ -1912,7 +1985,7 @@
                 
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
-                        <p>"The logo Hanni Coditz designed for my coffee shop perfectly captured the vibe I wanted. It's been incredibly well received by customers and has become a recognizable part of my brand."</p>
+                        <p>"The logo Alex designed for my coffee shop perfectly captured the vibe I wanted. It's been incredibly well received by customers and has become a recognizable part of my brand."</p>
                         <div class="client-info">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDhs1Z5SSVqH0w_4S8R4lnTj0O7Swn4NA5tA&s" alt="Client Photo">
                             <div>
@@ -1925,7 +1998,7 @@
                 
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
-                        <p>"Our Instagram engagement has doubled since we started using Hanni Coditz designs. They understand exactly how to create content that resonates with our audience."</p>
+                        <p>"Our Instagram engagement has doubled since we started using Alex's designs. They understand exactly how to create content that resonates with our audience."</p>
                         <div class="client-info">
                             <img src="https://miro.medium.com/v2/resize:fit:1200/1*hATEYt0u5wpq4VqRjsXfhQ.png" alt="Client Photo">
                             <div>
@@ -1938,7 +2011,7 @@
                 
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
-                        <p>"The business kit Hanni Coditz created gave our startup a professional, cohesive look across all our materials. The attention to detail was exceptional."</p>
+                        <p>"The business kit Alex created gave our startup a professional, cohesive look across all our materials. The attention to detail was exceptional."</p>
                         <div class="client-info">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ1CMZSIT9MBS0iJ2n8M7CGTfPEevPk79tqw&s" alt="Client Photo">
                             <div>
@@ -1951,7 +2024,7 @@
                 
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
-                        <p>"Our custom t-shirt designs from Hanni Coditz sold out within days! They perfectly captured our brand's aesthetic and message."</p>
+                        <p>"Our custom t-shirt designs from Alex sold out within days! They perfectly captured our brand's aesthetic and message."</p>
                         <div class="client-info">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS59DKQq-EX5Y-ljnM27NcDSlq9AEmBgYKbLA&s" alt="Client Photo">
                             <div>
@@ -2274,6 +2347,33 @@
             
             // Run on scroll
             window.addEventListener('scroll', animateOnScroll);
+            
+            // Dark mode toggle functionality
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const toggleIcon = document.querySelector('.toggle-icon');
+            
+            // Check for saved user preference
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                toggleIcon.classList.remove('fa-moon');
+                toggleIcon.classList.add('fa-sun');
+            }
+            
+            darkModeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                // Update icon
+                if (document.body.classList.contains('dark-mode')) {
+                    toggleIcon.classList.remove('fa-moon');
+                    toggleIcon.classList.add('fa-sun');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    toggleIcon.classList.remove('fa-sun');
+                    toggleIcon.classList.add('fa-moon');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
 
             // Chatbot functionality
             const chatbotToggle = document.getElementById('chatbotToggle');
