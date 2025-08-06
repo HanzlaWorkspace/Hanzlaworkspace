@@ -714,6 +714,122 @@
             box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
         }
 
+        /* Resume Section */
+        .resume {
+            background-color: var(--light-color);
+            position: relative;
+        }
+
+        .resume::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .resume-container {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .resume-content {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .resume-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), var(--neon-glow);
+        }
+
+        .resume-image {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .resume-image img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            max-width: 100%;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .resume-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover i {
+            animation: bounce 0.5s ease infinite alternate;
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            z-index: -1;
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .download-btn:hover::after {
+            opacity: 1;
+            animation: gradientBG 3s ease infinite;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
         /* Website Design Projects Section */
         .website-projects {
             background: linear-gradient(135deg, #0f0c29, #302b63);
@@ -1377,12 +1493,14 @@
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero .container,
-            .about .container {
+            .about .container,
+            .resume-container {
                 flex-direction: column;
             }
             
             .hero-content,
-            .about-content {
+            .about-content,
+            .resume-content {
                 padding-right: 0;
                 margin-bottom: 50px;
                 text-align: center;
@@ -1401,6 +1519,11 @@
                 height: 150px;
                 bottom: -20px;
                 right: -20px;
+            }
+
+            .resume-image {
+                order: -1;
+                margin-bottom: 30px;
             }
         }
 
@@ -1525,6 +1648,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#resume">Resume</a></li>
                     <li><a href="#websites">Websites</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1608,7 +1732,8 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="fab fa-youtube"></i>
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
                     </div>
                     <h3>YouTube Banners</h3>
                     <p>Professional YouTube channel art that makes a great first impression.</p>
@@ -1773,6 +1898,23 @@
             <div class="portfolio-cta">
                 <p>Want to see more of my work?</p>
                 <a href="https://miro.medium.com/v2/resize:fit:800/1*ZtOSzMM75x5QmuWGWf7k7g.jpeg" class="btn">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume" id="resume">
+        <div class="container">
+            <h2 class="section-title">My <span>Resume</span></h2>
+            <p class="section-subtitle">Download my professional resume</p>
+            
+            <div class="resume-container">
+                <div class="resume-image">
+                    <img src="https://i.postimg.cc/NFZRCKx2/aifaceswap-683b18cacf679742e54afc4f4b2b3115-removebg-preview.png" alt="Resume Preview">
+                    <a href="https://shorturl.at/ESq2A?usp=sharing" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -2044,6 +2186,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#resume">Resume</a></li>
                         <li><a href="#websites">Websites</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -2248,7 +2391,7 @@
             
             // Animation on scroll
             function animateOnScroll() {
-                const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content, .contact-info, .contact-form, .website-card');
+                const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content, .contact-info, .contact-form, .website-card, .resume-content, .resume-image');
                 
                 elements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
@@ -2262,7 +2405,7 @@
             }
             
             // Set initial state for animated elements
-            const animatedElements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content, .contact-info, .contact-form, .website-card');
+            const animatedElements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content, .contact-info, .contact-form, .website-card, .resume-content, .resume-image');
             animatedElements.forEach(element => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(30px)';
@@ -2370,6 +2513,17 @@
                         "What are your working hours?",
                         "Do you offer free consultations?",
                         "Where are you located?"
+                    ]
+                },
+                "resume": {
+                    responses: [
+                        "You can download my resume from the resume section of my website.",
+                        "My professional resume is available for download."
+                    ],
+                    quickReplies: [
+                        "What's your education background?",
+                        "What companies have you worked for?",
+                        "What skills do you have?"
                     ]
                 },
                 "process": {
@@ -2508,6 +2662,9 @@
                     foundMatch = true;
                 } else if (message.includes('contact') || message.includes('email') || message.includes('phone') || message.includes('whatsapp')) {
                     responseData = chatbotData.contact;
+                    foundMatch = true;
+                } else if (message.includes('resume') || message.includes('cv') || message.includes('experience') || message.includes('education')) {
+                    responseData = chatbotData.resume;
                     foundMatch = true;
                 } else if (message.includes('process') || message.includes('work') || message.includes('step') || message.includes('how do you')) {
                     responseData = chatbotData.process;
