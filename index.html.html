@@ -1191,6 +1191,137 @@
             background-color: #E60000;
         }
 
+        /* Payment Modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-content {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .payment-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .payment-tab.active {
+            border-bottom: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .payment-tab:hover {
+            color: var(--secondary-color);
+        }
+
+        .payment-method {
+            display: none;
+        }
+
+        .payment-method.active {
+            display: block;
+        }
+
+        .payment-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .payment-info p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .payment-info strong {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .payment-qr {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .payment-qr img {
+            max-width: 200px;
+            border-radius: 5px;
+        }
+
+        .payment-instructions {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .btn-confirm-payment {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-confirm-payment:hover {
+            background-color: #E60000;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero {
@@ -1272,6 +1403,18 @@
                 width: 100%;
                 max-width: 350px;
             }
+
+            .payment-content {
+                max-width: 90%;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 30px;
+                left: 30px;
+                font-size: 25px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1314,6 +1457,14 @@
             
             .app-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                left: 20px;
+                font-size: 20px;
             }
         }
 
@@ -1362,6 +1513,11 @@
     </style>
 </head>
 <body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923295478732" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Top Navigation Bar -->
     <header class="header">
         <div class="logo-container">
@@ -2392,6 +2548,76 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Payment</h2>
+            
+            <div class="payment-tabs">
+                <div class="payment-tab active" data-tab="jazzcash">JazzCash</div>
+                <div class="payment-tab" data-tab="easypaisa">EasyPaisa</div>
+                <div class="payment-tab" data-tab="crypto">Crypto (USDT)</div>
+                <div class="payment-tab" data-tab="binance">Binance</div>
+            </div>
+            
+            <!-- JazzCash Payment Method -->
+            <div class="payment-method active" id="jazzcash-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following JazzCash number:</p>
+                    <p><strong>JazzCash Number: +923295478732</strong></p>
+                    <p><strong>Account Name: khairunnisa</strong></p>
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction details to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="jazzcash">I've Made the Payment</button>
+            </div>
+            
+            <!-- EasyPaisa Payment Method -->
+            <div class="payment-method" id="easypaisa-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following EasyPaisa number:</p>
+                    <p><strong>EasyPaisa Number: +923325982480</strong></p>
+                    <p><strong>Account Name: Khairunisa</strong></p>
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction details to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="easypaisa">I've Made the Payment</button>
+            </div>
+            
+            <!-- Crypto (USDT) Payment Method -->
+            <div class="payment-method" id="crypto-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following USDT (BEP20) address:</p>
+                    <p><strong>USDT Address: 0x91a91bd7c9966cf23d8ecf105bd086dbd3ceaeb6</strong></p>
+                    <p><strong>Network: BNB Smart Chain  (BEP20)</strong></p>
+                </div>
+                <div class="payment-qr">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x91a91bd7c9966cf23d8ecf105bd086dbd3ceaeb6" alt="USDT QR Code">
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction hash (TXID) to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="crypto">I've Made the Payment</button>
+            </div>
+            
+            <!-- Binance Payment Method -->
+            <div class="payment-method" id="binance-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following Binance Pay ID:</p>
+                    <p><strong>Binance Pay ID: 949995586</strong></p>
+                    <p><strong>Supported Cryptos: USDT, BNB</strong></p>
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction details to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="binance">I've Made the Payment</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Cart Sidebar -->
     <div class="cart-sidebar">
         <div class="cart-header">
@@ -2410,7 +2636,7 @@
                 <span>Total:</span>
                 <span class="total-amount">$0.00</span>
             </div>
-            <button class="btn-checkout">Proceed to Checkout</button>
+            <button class="btn-checkout">Proceed to Payment</button>
         </div>
     </div>
     <div class="cart-overlay"></div>
@@ -2422,6 +2648,7 @@
             const signupBtn = document.querySelector('.btn-signup');
             const loginModal = document.getElementById('loginModal');
             const signupModal = document.getElementById('signupModal');
+            const paymentModal = document.getElementById('paymentModal');
             const closeModals = document.querySelectorAll('.close-modal');
             const switchToSignup = document.querySelector('.switch-to-signup');
             const switchToLogin = document.querySelector('.switch-to-login');
@@ -2437,6 +2664,11 @@
             const cartCount = document.querySelector('.cart-count');
             const cartTotal = document.querySelector('.total-amount');
             const checkoutBtn = document.querySelector('.btn-checkout');
+            
+            // Payment functionality
+            const paymentTabs = document.querySelectorAll('.payment-tab');
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const confirmPaymentBtns = document.querySelectorAll('.btn-confirm-payment');
             
             // Search functionality
             const searchInput = document.getElementById('search-input');
@@ -2533,6 +2765,7 @@
                 btn.addEventListener('click', function() {
                     loginModal.style.display = 'none';
                     signupModal.style.display = 'none';
+                    paymentModal.style.display = 'none';
                 });
             });
             
@@ -2556,6 +2789,9 @@
                 }
                 if (e.target === signupModal) {
                     signupModal.style.display = 'none';
+                }
+                if (e.target === paymentModal) {
+                    paymentModal.style.display = 'none';
                 }
             });
             
@@ -2724,26 +2960,41 @@
                 }
             }
             
-            // Checkout button - redirect to WhatsApp
+            // Checkout button - show payment options
             checkoutBtn.addEventListener('click', function() {
                 if (cart.length === 0) {
                     alert('Your cart is empty!');
                 } else {
-                    // Prepare message with cart items
-                    let message = "I want to purchase the following products:\n\n";
-                    cart.forEach(item => {
-                        message += `${item.title} (Qty: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
-                    });
-                    
-                    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                    message += `\nTotal: $${total.toFixed(2)}`;
-                    
-                    // Encode message for URL
-                    const encodedMessage = encodeURIComponent(message);
-                    
-                    // Redirect to WhatsApp with the message
-                    window.location.href = `https://wa.link/7ns6cq?text=${encodedMessage}`;
+                    cartSidebar.style.right = '-400px';
+                    paymentModal.style.display = 'flex';
                 }
+            });
+            
+            // Payment tabs functionality
+            paymentTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    paymentTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all payment methods
+                    paymentMethods.forEach(method => method.classList.remove('active'));
+                    // Show the selected payment method
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-method`).classList.add('active');
+                });
+            });
+            
+            // Confirm payment buttons
+            confirmPaymentBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const method = this.getAttribute('data-method');
+                    alert(`Thank you for your payment via ${method.toUpperCase()}! Please send the payment details Like screen shot of the payment to our WhatsApp support.`);
+                    
+                    // Redirect to YouTube as requested
+                    window.location.href = "https://wa.me/923295478732";
+                });
             });
             
             // Explore Courses button - scroll to featured courses
