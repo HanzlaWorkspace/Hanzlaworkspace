@@ -39,7 +39,14 @@
             color: var(--dark-color);
             background-color: #fff;
             overflow-x: hidden;
+            /* Prevent text selection */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
+
+        /* Removed security warning popup styles */
 
         .container {
             width: 90%;
@@ -75,6 +82,11 @@
         img {
             max-width: 100%;
             height: auto;
+            /* Prevent image dragging */
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
         }
 
         .btn {
@@ -197,6 +209,7 @@
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.5s ease;
+            z-index: -1;
         }
 
         .logo:hover::after {
@@ -974,6 +987,8 @@
         .client-info h4 {
             font-size: 1.2rem;
             margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
         }
 
         .client-info p {
@@ -981,6 +996,8 @@
             color: var(--gray-color);
             margin-bottom: 0;
             font-style: normal;
+            position: relative;
+            z-index: 2;
         }
 
         .slider-controls {
@@ -1100,6 +1117,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -1268,6 +1286,8 @@
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             cursor: pointer;
             transition: var(--transition);
+            position: relative;
+            z-index: 2;
         }
 
         .footer-newsletter button:hover {
@@ -1378,6 +1398,8 @@
             display: flex;
             transform: translateY(0);
             opacity: 1;
+            position: relative;
+            z-index: 10000;
         }
 
         .chatbot-header {
@@ -1488,6 +1510,18 @@
 
         .chatbot-input button:hover {
             background-color: var(--secondary-color);
+        }
+
+        /* Security overlay */
+        .security-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 999999;
+            display: none;
         }
 
         /* Responsive Styles */
@@ -1639,6 +1673,9 @@
     </style>
 </head>
 <body>
+    <!-- Security overlay for protection -->
+    <div class="security-overlay" id="securityOverlay"></div>
+    
     <!-- Header/Navbar -->
     <header>
         <div class="container">
@@ -2250,6 +2287,115 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // ========== SILENT SECURITY MEASURES ==========
+            
+            // Disable right-click without showing popup
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Disable F12, Ctrl+Shift+I, Ctrl+U, etc. without showing popup
+            document.addEventListener('keydown', function(e) {
+                // Disable F12
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable Ctrl+Shift+I
+                if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable Ctrl+U
+                if (e.ctrlKey && e.key === 'u') {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable Ctrl+Shift+C
+                if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable Ctrl+Shift+J
+                if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable DevTools on F12, Ctrl+Shift+I, etc.
+                if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.shiftKey && e.keyCode === 74) || (e.ctrlKey && e.keyCode === 85)) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Disable text selection
+            document.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Disable dragging
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Disable image dragging
+            var images = document.getElementsByTagName('img');
+            for (var i = 0; i < images.length; i++) {
+                images[i].setAttribute('draggable', 'false');
+            }
+            
+            // Disable iframe embedding
+            if (window != window.top) {
+                window.top.location = window.location;
+            }
+            
+            // Disable console methods silently
+            var noConsole = function() {};
+            if (typeof console != "undefined") {
+                if (typeof console.log != 'undefined') {
+                    console.log = noConsole;
+                    console.warn = noConsole;
+                    console.error = noConsole;
+                    console.info = noConsole;
+                    console.debug = noConsole;
+                }
+            }
+            
+            // Monitor for debugger attempts silently
+            var checkDebugger = function() {
+                function doCheck() {
+                    if (window.debuggerDetection) {
+                        window.location.reload();
+                    }
+                }
+                
+                try {
+                    doCheck();
+                } catch(err) {
+                    // Silent error handling
+                }
+            };
+            
+            // Run debugger check periodically but silently
+            setInterval(checkDebugger, 4000);
+            
+            // Add a hidden security overlay for additional protection
+            var securityOverlay = document.getElementById('securityOverlay');
+            securityOverlay.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // ========== END SECURITY MEASURES ==========
+            
             // Mobile Menu Toggle
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
