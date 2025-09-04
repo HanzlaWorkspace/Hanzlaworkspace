@@ -579,6 +579,213 @@
       border-top: 2px solid #dc2626;
     }
     
+    /* Exclusive Bundles Section Styles */
+    .bundles-header {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .bundles-title {
+      font-size: 3.5rem;
+      color: #ff3860;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(255, 56, 96, 0.7);
+      letter-spacing: 2px;
+    }
+    
+    .bundles-subtitle {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+    
+    .bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .bundle-card {
+      background: linear-gradient(145deg, #1a1a2e, #16213e);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s, box-shadow 0.4s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .bundle-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(255, 56, 96, 0.3);
+    }
+    
+    .bundle-product-container {
+      width: 100%;
+      height: 320px;
+      perspective: 1200px;
+      margin-bottom: 20px;
+    }
+    
+    .bundle-product {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      animation: rotate3d 15s linear infinite;
+    }
+    
+    .bundle-product-front, .bundle-product-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #000;
+    }
+    
+    .bundle-product-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(45deg, #2c3e50, #4a235a);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      text-align: left;
+    }
+    
+    .bundle-product-back h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #ff3860;
+      text-align: center;
+    }
+    
+    .bundle-product-back ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .bundle-product-back li {
+      font-size: 0.9rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    
+    .bundle-product-back p {
+      font-size: 1rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    .bundle-product img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .bundle-card h2 {
+      font-size: 1.6rem;
+      margin: 15px 0;
+      color: #fff;
+    }
+    
+    .bundle-price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .bundle-original-price {
+      font-size: 1.1rem;
+      color: #aaa;
+      text-decoration: line-through;
+    }
+    
+    .bundle-sale-price {
+      font-size: 1.4rem;
+      color: #ff3860;
+      font-weight: bold;
+    }
+    
+    .bundle-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, #ff3860, #ff2b56);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(255, 56, 96, 0.4);
+    }
+    
+    .bundle-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 56, 96, 0.6);
+      background: linear-gradient(45deg, #ff2b56, #ff3860);
+    }
+    
+    @keyframes rotate3d {
+      0% {
+        transform: rotateY(0deg);
+      }
+      25% {
+        transform: rotateY(90deg);
+      }
+      50% {
+        transform: rotateY(180deg);
+      }
+      75% {
+        transform: rotateY(270deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .bundles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+      
+      .bundles-title {
+        font-size: 2.5rem;
+      }
+      
+      .bundle-product-container {
+        height: 280px;
+      }
+      
+      .bundle-product {
+        animation-duration: 20s; /* Slower rotation on mobile */
+      }
+    }
+    
     @media (max-width: 768px) {
       .payment-options {
         grid-template-columns: 1fr;
@@ -624,6 +831,7 @@
         <a href="#vpns" class="nav-link hover:text-red-500 no-select">Premium VPNs</a>
         <a href="#iptv" class="nav-link hover:text-red-500 no-select">IPTV</a>
         <a href="#games" class="nav-link hover:text-red-500 no-select">Games</a>
+        <a href="#bundles" class="nav-link hover:text-red-500 no-select">Exclusive Bundles</a>
         <a href="#blog" class="nav-link hover:text-red-500 no-select">Blog</a>
         <a href="#contact" class="nav-link hover:text-red-500 no-select">Contact</a>
       </nav>
@@ -659,6 +867,7 @@
         <a href="#vpns" class="py-2 nav-link no-select">Premium VPNs</a>
         <a href="#iptv" class="py-2 nav-link no-select">IPTV</a>
         <a href="#games" class="py-2 nav-link no-select">Games</a>
+        <a href="#bundles" class="py-2 nav-link no-select">Exclusive Bundles</a>
         <a href="#blog" class="py-2 nav-link no-select">Blog</a>
         <a href="#contact" class="py-2 nav-link no-select">Contact</a>
       </div>
@@ -983,8 +1192,216 @@
       </div>
     </section>
 
+    <!-- Exclusive Bundles Section -->
+    <section id="bundles" class="section bg-gray-900">
+      <div class="container">
+        <div class="bundles-header" data-aos="fade-up">
+          <h1 class="bundles-title">🔥 OUR EXCLUSIVE BUNDLES 🔥</h1>
+          <p class="bundles-subtitle">Premium digital resources at unbeatable prices for creators, developers, and fitness enthusiasts</p>
+        </div>
+        
+        <div class="bundles-grid">
+          <!-- Bundle 1 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHo3RerpNFo6SOH_OU_sdloopVzyphMjLkpEOeF0uG5shcm-HXOsSMAbFLsKF7hHX7GL4ICrJCXAS-dP-3m8mAwTUN5h14pwLZzlJGVVa7m2W7SMklHXBeBMORCgAcXxsimEQNjA3qFd4INoLuxTSehzBykwwVc1m2dmqZUQXE6haMRdXPEwyGjA3ZVMk/s320/200GB%20editing%20pack.png" alt="200 GB Editing Pack">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>200GB premium video transitions</li>
+                    <li>Special effects packages</li>
+                    <li>Professional sound packs</li>
+                    <li>Color grading presets</li>
+                    <li>Title animations</li>
+                  </ul>
+                  <p>Perfect for professional video editors and content creators!</p>
+                </div>
+              </div>
+            </div>
+            <h2>200 GB Editing Pack</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 12,500</div>
+              <div class="bundle-sale-price">PKR 5,000</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="200 GB Editing Pack" data-price="5000">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 2 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRyCMBYBp-1IOAuh2zSZK51Ux86Zuz1cfLbUjT9wszATzwLnym_CehTPj28DCE-zWYOR9AhCTRQ11kaws3Dd4yJ4xIoLT0gwTkaFRL-o723CkgFPdHE0hFyUWCeXiY8toK5qmAOxGk_gUbyRQ0ttRx3SAG9L3KkWOq9wEMln8Acxd_Dwjg6QxV5lVoCJ0/s320/Pc%20software.png" alt="PC Softwares">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Productivity suite</li>
+                    <li>Creative software collection</li>
+                    <li>System utilities</li>
+                    <li>Security applications</li>
+                    <li>Media players & tools</li>
+                  </ul>
+                  <p>Everything you need for a fully-equipped PC!</p>
+                </div>
+              </div>
+            </div>
+            <h2>PC Softwares</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 10,000</div>
+              <div class="bundle-sale-price">PKR 4,000</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="PC Softwares" data-price="4000">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 3 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-bR3xd3aFVXw_EKPMmyNJVVMYUm49L-pocmI_I-Nf7t2E19E6KmL9NBRPFl5IrPHwthZS4dFO4JLOQrhP3cWd2BF1s_4xrR31Puv0yJwkoJ-YKJgVLy4kgz6rBuJAJ7WxdocyECgMSyQGjErUfqEWM54YsNfYXdcUWD9AVgkCSL_Jbsqu5k29KrNSad0/s320/gym%20motivation.png" alt="Gym Motivation">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>12-week workout plans</li>
+                    <li>Nutrition guides & recipes</li>
+                    <li>Motivational content library</li>
+                    <li>Progress tracking templates</li>
+                    <li>Supplement guidance</li>
+                  </ul>
+                  <p>Transform your fitness journey with our complete package!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Gym Motivation</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 7,500</div>
+              <div class="bundle-sale-price">PKR 3,000</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="Gym Motivation" data-price="3000">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 4 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEja-X0gDcWcJl12Elb8ijYS-CBRFi6e8mGArM-PJs6fx46vdL5CvQvyCFkPejSfpyHP_M_cllumlgkLkEzSzGde3gNbCW56-zWjXChJlIpPTh5mFlT5_ex4CBanj9jlWaySNyMWZhyD7kjYOw5Tm4cR6Wz2QOnA7iE3HUsn0c_K9drhwIFJSeMFj1q90yM/s320/3k%20plus%20fitness.png" alt="3K Plus Fitness Posts">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>3000+ fitness social media posts</li>
+                    <li>Workout ideas with instructions</li>
+                    <li>30-day fitness challenges</li>
+                    <li>Engaging captions & hashtags</li>
+                    <li>Customizable templates</li>
+                  </ul>
+                  <p>Grow your fitness social media with ready-to-post content!</p>
+                </div>
+              </div>
+            </div>
+            <h2>3K+ Fitness Posts</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 8,750</div>
+              <div class="bundle-sale-price">PKR 3,500</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="3K+ Fitness Posts" data-price="3500">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 5 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2cZqs0Lhkmh9dImF1m5KcIuMadMh8z3Tg7_a9gxgus-Kuj7sN7bR33jC8mOrhjh3buWIf_1pc1tIyBo56EWBEFYV4Ab3VvOlSIBkWyXgeZ0w1pyHceO0i8HwBR5LhmHPr6_rU08km9c2sqTUw2DYdeD63R_hYqOF45_NFBHAPm2IfusrDWquZ0Z9pJt8/s320/ai%20viral%20memes.png" alt="AI Viral Memes">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>AI-generated viral meme templates</li>
+                    <li>Trending content ideas</li>
+                    <li>Social media growth strategies</li>
+                    <li>Engagement boosting techniques</li>
+                    <li>Platform-specific optimization</li>
+                  </ul>
+                  <p>Go viral with AI-powered content creation!</p>
+                </div>
+              </div>
+            </div>
+            <h2>AI Viral Memes</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 6,250</div>
+              <div class="bundle-sale-price">PKR 2,500</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="AI Viral Memes" data-price="2500">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 6 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3oYxjeetK-3SLStW5tuoI0w6ZeJowBNGHBryX0hmZFgXikClQFU-Mx8WpUv8pbK7O73oUfvelUYZHHVnbAaHfMuMF4z7cBeabzzKku8Skq4mP3M4O3ly9O9-yILk_3eGi6g5J-sNrmi3aRYe9vpsJredNsZ3kBZyEKLJlOUlcw_Ge5mfgyjEOGNz1QMc/s320/HQ%20Qoutes.png" alt="HQ Quotes Images">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>1000+ high-quality quote images</li>
+                    <li>Inspirational content library</li>
+                    <li>Motivational graphics</li>
+                    <li>Multiple style variations</li>
+                    <li>Social media optimized formats</li>
+                  </ul>
+                  <p>Inspire your audience with beautiful quote graphics!</p>
+                </div>
+              </div>
+            </div>
+            <h2>HQ Quotes Images</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 5,000</div>
+              <div class="bundle-sale-price">PKR 2,000</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="HQ Quotes Images" data-price="2000">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 7 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="700">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzkAT5YZuKDtIBs-2kLYHfGRqJao81vAqvg0OKdjtiB9Uf9JXb20aqNsRT_84eeRblxuxiWC6FcJ-WQNg4Ytid3gWuZ3_-Qemfy1ZsTUeCbMr4xTNPPBZZp7_M0r63ytfJljOn7ZCpAhbF8lF8LGPl2L9I6lFbfD-1kGFUN_jXRbfTSyIbrtM4IsZXDO0/s320/5k%20editable%20post.png" alt="5K Editable Posts">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>5000+ editable social media templates</li>
+                    <li>Multiple niche categories</li>
+                    <li>Customizable designs</li>
+                    <li>Source files included</li>
+                    <li>Regular content updates</li>
+                  </ul>
+                  <p>Never run out of social media content again!</p>
+                </div>
+              </div>
+            </div>
+            <h2>5K Editable Posts</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 11,250</div>
+              <div class="bundle-sale-price">PKR 4,500</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="5K Editable Posts" data-price="4500">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Blog Section -->
-    <section id="blog" class="section bg-gray-900">
+    <section id="blog" class="section">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">LATEST BLOG POSTS</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Helpful guides and information about digital services, VPNs, and entertainment</p>
@@ -1025,7 +1442,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="section">
+    <section class="section bg-gray-900">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">What Our Customers Say</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Read genuine feedback from our satisfied customers across Pakistan</p>
@@ -1057,7 +1474,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section bg-gray-900">
+    <section class="section">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our products and services</p>
@@ -1113,12 +1530,12 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-gray-900">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">CONTACT US</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out to us for orders, support, or any questions</p>
         
-        <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+        <div class="max-w-md mx-auto bg-black p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
           <div class="mb-6">
             <h3 class="text-xl font-bold mb-4">Business Hours</h3>
             <p class="text-gray-300">24/7 Support Available</p>
@@ -1145,12 +1562,12 @@
     </section>
 
     <!-- Privacy -->
-    <section id="privacy" class="section bg-gray-900">
+    <section id="privacy" class="section">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">PRIVACY POLICY</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">We value your privacy and security</p>
         
-        <div class="max-w-3xl mx-auto text-left bg-black p-6 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+        <div class="max-w-3xl mx-auto text-left bg-gray-900 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="300">
           <p class="text-gray-300 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
           
           <p class="text-gray-300 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
@@ -1187,6 +1604,7 @@
               <li><a href="#vpns" class="text-gray-400 hover:text-red-500">VPN Services</a></li>
               <li><a href="#iptv" class="text-gray-400 hover:text-red-500">IPTV</a></li>
               <li><a href="#games" class="text-gray-400 hover:text-red-500">Gaming</a></li>
+              <li><a href="#bundles" class="text-gray-400 hover:text-red-500">Exclusive Bundles</a></li>
             </ul>
           </div>
           
@@ -1264,7 +1682,7 @@ const games=[
   {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons"},
   {name:"8 Ball Pool Coins",img:"https://upload.wikimedia.org/wikipedia/en/3/3b/8_Ball_Pool_logo.png", desc: "Get coins for 8 Ball Pool to play in higher stake games"},
   {name:"Call of Duty Points",img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/Call_of_Duty_logo.png", desc: "Purchase CP for Call of Duty Mobile to unlock premium content"},
-  {name:"Fortnite V-Bucks",img:"https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.png", desc: "Get V-Bucks for Fortnite to buy skins, emotes, and battle passes"},
+  {name:"Fortnite V-Bucks",img:"https://upload.wikedia.org/wikipedia/commons/3/31/Epic_Games_logo.png", desc: "Get V-Bucks for Fortnite to buy skins, emotes, and battle passes"},
   {name:"Genshin Impact Crystals",img:"https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_logo.svg", desc: "Purchase Genesis Crystals for characters, weapons, and resources"},
 ];
 
