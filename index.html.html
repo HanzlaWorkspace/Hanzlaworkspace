@@ -643,7 +643,6 @@
       transform-style: preserve-3d;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-      animation: rotate3d 15s linear infinite;
     }
     
     .bundle-product-front, .bundle-product-back {
@@ -749,6 +748,10 @@
       background: linear-gradient(45deg, #ff2b56, #ff3860);
     }
     
+    .bundle-card.active .bundle-product {
+      animation: rotate3d 15s linear infinite;
+    }
+    
     @keyframes rotate3d {
       0% {
         transform: rotateY(0deg);
@@ -779,10 +782,6 @@
       
       .bundle-product-container {
         height: 280px;
-      }
-      
-      .bundle-product {
-        animation-duration: 20s; /* Slower rotation on mobile */
       }
     }
     
@@ -1654,8 +1653,6 @@ const apps=[
   {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features"},
   {name:"Apple Music",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCILiYSmQG4bavERxrdjOyAfH2CdF3ipqazw&s", desc: "Over 100 million songs ad-free with offline listening"},
   {name:"Grammarly Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8y6wi5Tg40IDq9eMNJuPOKcuw8FGNKloTiw&s", desc: "Advanced grammar checking, plagiarism detection, and writing suggestions"},
-  {name:"Adobe Creative Cloud",img:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Adobe_Creative_Cloud_icon.svg", desc: "Complete suite of Adobe creative apps including Photoshop, Illustrator, and more"},
-  {name:"Microsoft 365",img:"https://upload.wikimedia.org/wikipedia/commons/3/35/Microsoft_Office_logo_%282019%E2%80%93present%29.svg", desc: "Full Microsoft Office suite with 1TB cloud storage and premium features"},
   {name:"ChatGPT Plus",img:"https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg", desc: "Access to GPT-4, faster response times, and priority access to new features"},
 ];
 
@@ -1666,24 +1663,18 @@ const vpns=[
   {name:"CyberGhost",img:"https://upload.wikimedia.org/wikipedia/commons/7/7a/CyberGhost_logo.png", desc: "User-friendly VPN with optimized servers for streaming"},
   {name:"Surfshark",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjcfR2uO4YmKI6kZaEatRJiWwRCNdM5vTDxw&s", desc: "Unlimited device connections with cleanweb ad blocking"},
   {name:"IPVanish",img:"https://upload.wikimedia.org/wikipedia/commons/5/5c/IPVanish_logo.png", desc: "Unlimited bandwidth and anonymous browsing with high-speed connections"},
-  {name:"Private Internet Access",img:"https://upload.wikimedia.org/wikipedia/commons/7/7a/PIA_logo.png", desc: "No traffic logs and advanced privacy protection features"},
 ];
 
 const iptv=[
   {name:"Rolex TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWEZxCa3sQW4EbdE43", desc: "10,000+ channels with 4K support and VOD library"},
   {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events"},
   {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features"},
-  {name:"Cobra TV",img:"https://upload.wikimedia.org/wikipedia/commons/9/9a/Cobra_Logo.png", desc: "Premium international channels with multi-device support"},
-  {name:"Falcon TV",img:"https://upload.wikimedia.org/wikipedia/commons/7/7a/Falcon_TV_logo.png", desc: "4K streaming with extensive sports and movie collection"},
 ];
 
 const games=[
   {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates"},
   {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons"},
   {name:"8 Ball Pool Coins",img:"https://upload.wikimedia.org/wikipedia/en/3/3b/8_Ball_Pool_logo.png", desc: "Get coins for 8 Ball Pool to play in higher stake games"},
-  {name:"Call of Duty Points",img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/Call_of_Duty_logo.png", desc: "Purchase CP for Call of Duty Mobile to unlock premium content"},
-  {name:"Fortnite V-Bucks",img:"https://upload.wikedia.org/wikipedia/commons/3/31/Epic_Games_logo.png", desc: "Get V-Bucks for Fortnite to buy skins, emotes, and battle passes"},
-  {name:"Genshin Impact Crystals",img:"https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_logo.svg", desc: "Purchase Genesis Crystals for characters, weapons, and resources"},
 ];
 
 /* -------------------------
@@ -2019,6 +2010,23 @@ document.querySelectorAll('.faq-question').forEach(q=>{
     answer.classList.toggle('hidden');
     icon.classList.toggle('fa-chevron-down');
     icon.classList.toggle('fa-chevron-up');
+  });
+});
+
+/* -------------------------
+   Bundle Rotation Logic
+   ------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+  const bundleCards = document.querySelectorAll('.bundle-card');
+  
+  bundleCards.forEach(card => {
+    card.addEventListener('click', function() {
+      // Remove active class from all cards
+      bundleCards.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked card
+      this.classList.add('active');
+    });
   });
 });
 
