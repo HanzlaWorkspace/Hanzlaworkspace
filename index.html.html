@@ -786,8 +786,205 @@
       border-color: #dc2626;
       box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
     }
+
+    /* Chatbot Styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      background: #1a1a1a;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      z-index: 999;
+      overflow: hidden;
+      border: 2px solid #dc2626;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .chatbot-container.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .chatbot-header {
+      background: #dc2626;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .chatbot-title img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    
+    .chatbot-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    
+    .chatbot-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .message {
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 18px;
+      margin-bottom: 10px;
+      position: relative;
+      line-height: 1.5;
+    }
+    
+    .bot-message {
+      background: #2d2d2d;
+      color: white;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    
+    .user-message {
+      background: #dc2626;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    
+    .chatbot-input {
+      display: flex;
+      padding: 15px;
+      border-top: 1px solid #333;
+      background: #1a1a1a;
+    }
+    
+    .chatbot-input input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      background: #2d2d2d;
+      color: white;
+      outline: none;
+    }
+    
+    .chatbot-input button {
+      background: #dc2626;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: #dc2626;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+    
+    .chatbot-toggle i {
+      font-size: 24px;
+    }
+    
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .quick-reply {
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .quick-reply:hover {
+      background: #dc2626;
+    }
+    
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 15px;
+      background: #2d2d2d;
+      border-radius: 18px;
+      align-self: flex-start;
+      margin-bottom: 10px;
+      max-width: 80px;
+    }
+    
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #999;
+      border-radius: 50%;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    
+    @keyframes typingAnimation {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
     
     @media (max-width: 768px) {
+      .chatbot-container {
+        width: 90%;
+        height: 70%;
+        right: 5%;
+        bottom: 80px;
+      }
+      
       .bundles-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 25px;
@@ -1088,6 +1285,40 @@
     <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
+  </div>
+
+  <!-- Chatbot Toggle Button -->
+  <div class="chatbot-toggle" id="chatbot-toggle">
+    <i class="fas fa-robot"></i>
+  </div>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbot-container">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <span>🔥</span>
+        <span>Growzio Assistant</span>
+      </div>
+      <button class="chatbot-close" id="chatbot-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages">
+      <div class="message bot-message">
+        Hi there! 👋 I'm your Growzio assistant. How can I help you today?
+        <div class="quick-replies">
+          <button class="quick-reply" data-message="Tell me about your services">Services</button>
+          <button class="quick-reply" data-message="How to make payment">Payment</button>
+          <button class="quick-reply" data-message="Do you offer discounts?">Discounts</button>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbot-input" placeholder="Type your message here..." />
+      <button id="chatbot-send">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
   </div>
 
   <!-- Main Website Content (initially visible) -->
@@ -2107,6 +2338,211 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.add('active');
     });
   });
+});
+
+/* -------------------------
+   Chatbot Logic
+   ------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotContainer = document.getElementById('chatbot-container');
+  const chatbotClose = document.getElementById('chatbot-close');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const chatbotInput = document.getElementById('chatbot-input');
+  const chatbotSend = document.getElementById('chatbot-send');
+  
+  // Toggle chatbot visibility
+  chatbotToggle.addEventListener('click', function() {
+    chatbotContainer.classList.toggle('open');
+  });
+  
+  chatbotClose.addEventListener('click', function() {
+    chatbotContainer.classList.remove('open');
+  });
+  
+  // Send message function
+  function sendMessage() {
+    const message = chatbotInput.value.trim();
+    if (message === '') return;
+    
+    // Add user message to chat
+    addMessage(message, 'user');
+    chatbotInput.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Process message and generate response
+    setTimeout(() => {
+      removeTypingIndicator();
+      const response = generateResponse(message);
+      addMessage(response, 'bot');
+    }, 1000);
+  }
+  
+  // Send message on button click
+  chatbotSend.addEventListener('click', sendMessage);
+  
+  // Send message on Enter key
+  chatbotInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  });
+  
+  // Quick reply buttons
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('quick-reply')) {
+      const message = e.target.dataset.message;
+      chatbotInput.value = message;
+      sendMessage();
+    }
+  });
+  
+  // Add message to chat
+  function addMessage(text, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${sender}-message`;
+    messageElement.textContent = text;
+    
+    // Add quick replies for bot messages
+    if (sender === 'bot') {
+      const quickReplies = generateQuickReplies(text);
+      if (quickReplies) {
+        const quickRepliesContainer = document.createElement('div');
+        quickRepliesContainer.className = 'quick-replies';
+        quickReplies.forEach(reply => {
+          const button = document.createElement('button');
+          button.className = 'quick-reply';
+          button.textContent = reply.text;
+          button.dataset.message = reply.message;
+          quickRepliesContainer.appendChild(button);
+        });
+        messageElement.appendChild(quickRepliesContainer);
+      }
+    }
+    
+    chatbotMessages.appendChild(messageElement);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+  
+  // Show typing indicator
+  function showTypingIndicator() {
+    const typingElement = document.createElement('div');
+    typingElement.className = 'typing-indicator';
+    typingElement.id = 'typing-indicator';
+    typingElement.innerHTML = `
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    `;
+    chatbotMessages.appendChild(typingElement);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+  
+  // Remove typing indicator
+  function removeTypingIndicator() {
+    const typingElement = document.getElementById('typing-indicator');
+    if (typingElement) {
+      typingElement.remove();
+    }
+  }
+  
+  // Generate response based on user input
+  function generateResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Greetings
+    if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey')) {
+      return "Hello! 👋 I'm your Growzio assistant. How can I help you today?";
+    }
+    
+    // Services
+    if (lowerMessage.includes('service') || lowerMessage.includes('product') || lowerMessage.includes('offer')) {
+      return "We offer a wide range of digital services including:\n\n🔥 Premium Apps: Netflix, Spotify, YouTube Premium, Canva Pro, and more\n🔒 VPN Services: ExpressVPN, NordVPN, Surfshark, and others\n📺 IPTV: Rolex TV, Bos TV, Zain TV with 10,000+ channels\n🎮 Gaming: PUBG UC, Free Fire Diamonds, and game top-ups\n💥 Exclusive Bundles: Editing packs, software bundles, and more\n\nWhich service are you interested in?";
+    }
+    
+    // Payment methods
+    if (lowerMessage.includes('payment') || lowerMessage.includes('pay') || lowerMessage.includes('how to buy')) {
+      return "We accept multiple payment methods for your convenience:\n\n💳 JazzCash: Send payment to 03295478732 (Khairunisa)\n💳 Easypaisa: Send payment to 03325982480 (Khairunisa)\n🔗 Binance: Pay using crypto to UID 14245485\n\nAfter payment, simply send the screenshot to our WhatsApp at +92 319 5179084 for instant delivery!";
+    }
+    
+    // Discounts
+    if (lowerMessage.includes('discount') || lowerMessage.includes('offer') || lowerMessage.includes('sale')) {
+      return "🔥 We currently have a SPECIAL 30% OFF on all services! This limited-time offer is ending soon, so don't miss out. All our products are already priced lower than market rates, and with this discount, you're getting the best deal in Pakistan!";
+    }
+    
+    // Delivery time
+    if (lowerMessage.includes('delivery') || lowerMessage.includes('time') || lowerMessage.includes('how long')) {
+      return "⏰ We provide INSTANT delivery! Once your payment is confirmed, you'll receive your product credentials within minutes. We're available 24/7 to ensure you get your digital services without any delay.";
+    }
+    
+    // Support
+    if (lowerMessage.includes('support') || lowerMessage.includes('help') || lowerMessage.includes('contact')) {
+      return "📞 Our customer support is available 24/7 on WhatsApp at +92 319 5179084. You can message us for:\n- Product inquiries\n- Payment assistance\n- Technical support\n- Order tracking\n- Refund requests\n\nWe're here to help you anytime!";
+    }
+    
+    // Warranty
+    if (lowerMessage.includes('warranty') || lowerMessage.includes('guarantee') || lowerMessage.includes('genuine')) {
+      return "✅ All our products come with a 100% genuineness guarantee! We provide warranty on all subscriptions:\n\n- App subscriptions: Full warranty period\n- VPN services: Complete duration warranty\n- IPTV: Stable service guarantee\n- Gaming: Instant delivery guarantee\n\nIf you face any issues, we provide replacements or refunds!";
+    }
+    
+    // Specific products
+    if (lowerMessage.includes('netflix')) {
+      return "🎬 Netflix Premium: Enjoy 4K streaming on up to 4 devices simultaneously. We offer personal and shared accounts with full warranty. Current discounted price: 350 PKR/month (regularly 500 PKR).";
+    }
+    
+    if (lowerMessage.includes('spotify')) {
+      return "🎵 Spotify Premium: Ad-free music listening, offline downloads, and high-quality audio. Personal accounts with warranty. Current discounted price: 300 PKR/month (regularly 429 PKR).";
+    }
+    
+    if (lowerMessage.includes('expressvpn') || lowerMessage.includes('vpn')) {
+      return "🔒 ExpressVPN: High-speed VPN with 3000+ servers in 94 countries. Best for streaming, privacy, and bypassing restrictions. Current discounted price: 1200 PKR/year (regularly 1700 PKR).";
+    }
+    
+    if (lowerMessage.includes('iptv')) {
+      return "📺 IPTV Services: We offer Rolex TV, Bos TV, and Zain TV with 10,000+ channels, VOD, and 4K support. Stable connections with catch-up features. Prices start from 1000 PKR/year.";
+    }
+    
+    if (lowerMessage.includes('pubg') || lowerMessage.includes('uc')) {
+      return "🎮 PUBG UC: Get UC for PUBG Mobile at best rates. Instant delivery after payment. Various packages available starting from 100 PKR.";
+    }
+    
+    // Default response
+    return "I'm here to help you with Growzio's services! You can ask me about:\n- Our products and services\n- Payment methods\n- Current discounts\n- Delivery time\n- Warranty information\n- Technical support\n\nWhat would you like to know?";
+  }
+  
+  // Generate quick replies based on context
+  function generateQuickReplies(lastMessage) {
+    const lowerMessage = lastMessage.toLowerCase();
+    
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+      return [
+        { text: 'Services', message: 'Tell me about your services' },
+        { text: 'Payment', message: 'How to make payment' },
+        { text: 'Discounts', message: 'Do you offer discounts?' }
+      ];
+    }
+    
+    if (lowerMessage.includes('service') || lowerMessage.includes('product')) {
+      return [
+        { text: 'Netflix', message: 'Tell me about Netflix' },
+        { text: 'Spotify', message: 'Tell me about Spotify' },
+        { text: 'VPN', message: 'Tell me about VPN services' },
+        { text: 'Payment', message: 'How to make payment' }
+      ];
+    }
+    
+    if (lowerMessage.includes('payment')) {
+      return [
+        { text: 'JazzCash', message: 'JazzCash payment details' },
+        { text: 'Easypaisa', message: 'Easypaisa payment details' },
+        { text: 'Support', message: 'Contact support' }
+      ];
+    }
+    
+    return null;
+  }
 });
 
 /* -------------------------
