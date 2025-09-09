@@ -1697,37 +1697,296 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section bg-gray-900">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">What Our Customers Say</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Read genuine feedback from our satisfied customers across Pakistan</p>
+    <!-- Customer Reviews Section -->
+<section id="reviews" class="section">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">CUSTOMER REVIEWS</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">See what our customers are saying about our products and services</p>
+    
+    <div class="bg-gray-900 rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Review Form -->
+        <div class="review-form-container">
+          <h3 class="text-xl font-bold mb-4 text-red-500">Submit Your Review</h3>
+          <div class="success-message" id="successMessage" style="display: none;">
+            Thank you for your review!
+          </div>
+          
+          <form id="reviewForm">
+            <div class="form-group">
+              <label for="username" class="block mb-2 font-medium"><i class="fas fa-user mr-2"></i>Username</label>
+              <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="product" class="block mb-2 font-medium"><i class="fas fa-box mr-2"></i>Product/Service</label>
+              <select id="product" class="form-control" required>
+                <option value="">Select a product/service</option>
+                <optgroup label="Streaming Services">
+                  <option value="YouTube Premium">YouTube Premium</option>
+                  <option value="Spotify Premium">Spotify Premium</option>
+                  <option value="Netflix Premium">Netflix Premium</option>
+                  <option value="Prime Video">Prime Video</option>
+                  <option value="Apple Music">Apple Music</option>
+                </optgroup>
+                <optgroup label="Creative Tools">
+                  <option value="CapCut Pro">CapCut Pro</option>
+                  <option value="Canva Pro">Canva Pro</option>
+                </optgroup>
+                <optgroup label="Productivity Tools">
+                  <option value="Grammarly Premium">Grammarly Premium</option>
+                  <option value="ChatGPT Plus">ChatGPT Plus</option>
+                </optgroup>
+                <optgroup label="VPN Services">
+                  <option value="ExpressVPN">ExpressVPN</option>
+                  <option value="NordVPN">NordVPN</option>
+                  <option value="ProtonVPN">ProtonVPN</option>
+                  <option value="CyberGhost">CyberGhost</option>
+                  <option value="Surfshark">Surfshark</option>
+                  <option value="IPVanish">IPVanish</option>
+                </optgroup>
+                <optgroup label="Content Packs">
+                  <option value="200 GB Editing Pack">200 GB Editing Pack</option>
+                  <option value="PC Softwares">PC Softwares</option>
+                  <option value="Gym Motivation">Gym Motivation</option>
+                  <option value="3K+ Fitness Posts">3K+ Fitness Posts</option>
+                  <option value="AI Viral Memes">AI Viral Memes</option>
+                  <option value="HQ Quotes Images">HQ Quotes Images</option>
+                  <option value="5K Editable Posts">5K Editable Posts</option>
+                </optgroup>
+                <optgroup label="TV Services">
+                  <option value="Rolex TV">Rolex TV</option>
+                  <option value="Bos TV">Bos TV</option>
+                  <option value="Zain TV">Zain TV</option>
+                </optgroup>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="rating" class="block mb-2 font-medium"><i class="fas fa-star mr-2"></i>Rating</label>
+              <select id="rating" class="form-control" required>
+                <option value="">Select your rating</option>
+                <option value="5">★★★★★ - Excellent</option>
+                <option value="4">★★★★ - Very Good</option>
+                <option value="3">★★★ - Good</option>
+                <option value="2">★★ - Fair</option>
+                <option value="1">★ - Poor</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="reviewText" class="block mb-2 font-medium"><i class="fas fa-comment mr-2"></i>Review (Optional)</label>
+              <textarea id="reviewText" class="form-control" rows="3" placeholder="Share your experience..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn w-full bg-red-600 hover:bg-red-700"><i class="fas fa-paper-plane mr-2"></i>Submit Review</button>
+          </form>
+        </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="flex items-center mb-4 text-yellow-400">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="text-gray-300 mb-4">"Got my Netflix premium account within minutes of payment. Genuine service at best price! Will definitely buy again."</p>
-            <p class="text-white font-medium">- Ali R., Karachi</p>
-          </div>
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="flex items-center mb-4 text-yellow-400">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="text-gray-300 mb-4">"Best place to buy PUBG UC in Pakistan. Instant delivery and great support. Highly recommended for gamers!"</p>
-            <p class="text-white font-medium">- Ahmed K., Lahore</p>
-          </div>
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
-            <div class="flex items-center mb-4 text-yellow-400">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="text-gray-300 mb-4">"Purchased ExpressVPN for year. Working perfectly and much cheaper than official website. Great service!"</p>
-            <p class="text-white font-medium">- Fatima S., Islamabad</p>
+        <!-- Reviews Display -->
+        <div class="reviews-container">
+          <h3 class="text-xl font-bold mb-4 text-red-500">Recent Reviews</h3>
+          <div id="reviewsList" class="space-y-4">
+            <!-- Reviews will be displayed here -->
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<!-- Add this CSS to your existing style section -->
+<style>
+.review-form-container {
+  padding: 1.5rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.reviews-container {
+  padding: 1.5rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background-color: #2d2d2d;
+  color: #fff;
+  font-size: 1rem;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+.success-message {
+  background: rgba(0, 200, 0, 0.2);
+  color: #4CAF50;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #4CAF50;
+}
+
+.review-item {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 15px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.username {
+  font-weight: 600;
+  color: #ff3b30;
+}
+
+.rating {
+  color: #ffcc00;
+  font-weight: 600;
+}
+
+.review-text {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.product {
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.review-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #777;
+  font-size: 13px;
+}
+</style>
+
+<!-- Add this JavaScript before the closing </body> tag -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewsList = document.getElementById('reviewsList');
+  const successMessage = document.getElementById('successMessage');
+  
+  // Load existing reviews from localStorage
+  loadReviews();
+  
+  // Handle form submission
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const product = document.getElementById('product').value;
+    const rating = document.getElementById('rating').value;
+    const reviewText = document.getElementById('reviewText').value;
+    
+    // Create review object
+    const review = {
+      username,
+      product,
+      rating,
+      reviewText,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      id: Date.now() // Add unique ID for each review
+    };
+    
+    // Add to all reviews list
+    saveReviewToAll(review);
+    
+    // Add review to the page
+    addReviewToPage(review);
+    
+    // Show success message
+    successMessage.style.display = 'block';
+    
+    // Reset form
+    reviewForm.reset();
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  });
+  
+  function saveReviewToAll(review) {
+    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    reviews.push(review);
+    localStorage.setItem('allReviews', JSON.stringify(reviews));
+  }
+  
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    
+    if (reviews.length === 0) {
+      reviewsList.innerHTML = '<div class="review-item"><div class="review-text">No reviews yet. Be the first to review!</div></div>';
+      return;
+    }
+    
+    // Show reviews in reverse chronological order
+    reviews.reverse().forEach(review => {
+      addReviewToPage(review);
+    });
+  }
+  
+  function addReviewToPage(review) {
+    const reviewItem = document.createElement('div');
+    reviewItem.classList.add('review-item');
+    
+    // Convert rating to stars
+    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+    
+    reviewItem.innerHTML = `
+      <div class="review-header">
+        <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
+        <span class="rating">${stars}</span>
+      </div>
+      <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
+      ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
+      <div class="review-meta">
+        <span><i class="far fa-calendar"></i> ${review.date}</span>
+        <span><i class="far fa-clock"></i> ${review.time}</span>
+      </div>
+    `;
+    
+    reviewsList.prepend(reviewItem);
+  }
+});
+</script>
 
     <!-- FAQ -->
     <section class="section">
