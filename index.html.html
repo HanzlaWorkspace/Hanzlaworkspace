@@ -29,9 +29,10 @@
       theme: {
         extend: {
           colors: {
-            primary: '#dc2626',
-            secondary: '#991b1b',
+            primary: '#CC5500',
+            secondary: '#005F73',
             dark: '#0a0a0a',
+            lightbg: '#F8F9FA'
           }
         }
       }
@@ -67,9 +68,13 @@
   <style>
     /* Global */
     :root {
-      --primary: #dc2626;
-      --primary-dark: #991b1b;
-      --dark: #0a0a0a;
+      --primary: #CC5500;       /* Burnt Orange for interactive elements */
+      --primary-dark: #A04300;  /* Darker shade for hover states */
+      --secondary: #005F73;     /* Deep Teal for headers, footers */
+      --secondary-dark: #004953; /* Darker teal */
+      --dark: #0a0a0a;          /* Keeping dark for text */
+      --light-bg: #F8F9FA;      /* Light off-white for backgrounds */
+      --light-text: #FFFFFF;    /* White for text on dark backgrounds */
     }
     
     * {
@@ -80,8 +85,8 @@
     
     body { 
       scroll-behavior: smooth; 
-      background-color: var(--dark);
-      color: #fff;
+      background-color: var(--light-bg);
+      color: #333;
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
     }
@@ -93,7 +98,7 @@
     }
     
     h1, h2, h3, h4 {
-      color: #ffffff;
+      color: var(--secondary);
       line-height: 1.3;
       font-weight: 700;
     }
@@ -136,7 +141,7 @@
     .btn:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
+      box-shadow: 0 10px 20px rgba(204, 85, 0, 0.2);
     }
     
     .btn-outline {
@@ -174,12 +179,12 @@
       height: 60px;
       bottom: 20px;
       right: 20px;
-      background: #25d366;
+      background: var(--primary);
       color: #fff;
       border-radius: 50px;
       text-align: center;
       font-size: 30px;
-      box-shadow: 0 0 15px rgba(37,211,102,0.35);
+      box-shadow: 0 0 15px rgba(204, 85, 0, 0.35);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -194,20 +199,20 @@
     }
     
     .glow-box {
-      box-shadow: 0 0 15px rgba(255,0,0,0.25);
+      box-shadow: 0 0 15px rgba(204, 85, 0, 0.25);
     } 
     
-    .glow-red:hover {
-      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    .glow-orange:hover {
+      box-shadow: 0 0 20px rgba(204, 85, 0, 0.6);
     }
 
     /* Offer timer */
     .offer-timer {
-      background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000); 
+      background: linear-gradient(90deg, var(--primary), #FF7F40, var(--primary)); 
       background-size: 200% 200%; 
       animation: gradientShift 3s ease infinite; 
       border: 2px solid #fff; 
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+      box-shadow: 0 0 20px rgba(204, 85, 0, 0.35);
     } 
     
     @keyframes gradientShift { 
@@ -234,13 +239,13 @@
 
     /* Navbar */
     .nav-link { 
-      color: #fff; 
+      color: var(--light-text); 
       text-decoration: none;
       transition: all 0.3s ease;
     }
     
     .nav-link:hover { 
-      color: #ff5555; 
+      color: var(--primary); 
     }
 
     /* Mobile menu */
@@ -261,6 +266,10 @@
     /* Content helpers */
     .section {
       padding: 4rem 0;
+    }
+    
+    .section:nth-child(even) {
+      background-color: #FFFFFF;
     }
     
     .section-title {
@@ -285,7 +294,7 @@
     
     .section-subtitle {
       text-align: center;
-      color: #ccc;
+      color: #666;
       margin-bottom: 3rem;
       max-width: 700px;
       margin-left: auto;
@@ -293,7 +302,7 @@
     }
     
     .trust-badge { 
-      background: rgba(255,255,255,0.05); 
+      background: rgba(0, 95, 115, 0.1); 
       border-radius: 12px; 
       padding: 1.5rem; 
       text-align: center; 
@@ -302,19 +311,20 @@
     
     .trust-badge:hover { 
       transform: translateY(-5px); 
-      background: rgba(255,255,255,0.1); 
+      background: rgba(0, 95, 115, 0.15); 
     }
     
     .testimonial-card { 
-      background: linear-gradient(145deg, #1a1a1a, #2a2a2a); 
-      border-left: 4px solid #ff0000; 
+      background: linear-gradient(145deg, #f5f5f5, #e6e6e6); 
+      border-left: 4px solid var(--primary); 
       padding: 1.5rem; 
       border-radius: 8px; 
       height: 100%;
+      color: #333;
     }
     
     .faq-item { 
-      border-bottom: 1px solid #333; 
+      border-bottom: 1px solid #ddd; 
       padding: 1rem 0; 
     }
     
@@ -327,7 +337,7 @@
     
     /* Blog cards */
     .blog-card {
-      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      background: linear-gradient(145deg, #f5f5f5, #e6e6e6);
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s ease;
@@ -353,9 +363,9 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(255,255,255,.3);
+      border: 3px solid rgba(0,0,0,.3);
       border-radius: 50%;
-      border-top-color: #fff;
+      border-top-color: #333;
       animation: spin 1s ease-in-out infinite;
     }
     
@@ -374,6 +384,8 @@
       max-width: 800px;
       max-height: 90vh;
       overflow-y: auto;
+      background: var(--light-bg);
+      color: #333;
     }
     
     /* Added to Cart Modal */
@@ -385,6 +397,8 @@
       margin: 0;
       max-width: 450px;
       width: 90%;
+      background: var(--light-bg);
+      color: #333;
     }
     
     /* New Animations */
@@ -418,7 +432,7 @@
     }
     
     .gradient-text {
-      background: linear-gradient(to right, #ff8a00, #da1b60);
+      background: linear-gradient(to right, var(--primary), #FF7F40);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 300% 300%;
@@ -464,11 +478,12 @@
     .payment-container {
       max-width: 1000px;
       margin: 2rem auto;
-      background: #1a1a1a;
+      background: white;
       border-radius: 12px;
       padding: 2rem;
       position: relative;
       flex-grow: 1;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     
     .payment-options {
@@ -479,17 +494,18 @@
     }
     
     .payment-option {
-      background: #252525;
+      background: white;
       border-radius: 12px;
       padding: 1.5rem;
-      border: 1px solid #333;
+      border: 1px solid #ddd;
       transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
     
     .payment-option:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);
-      border-color: #dc2626;
+      box-shadow: 0 10px 25px rgba(204, 85, 0, 0.2);
+      border-color: var(--primary);
     }
     
     .payment-logo {
@@ -509,7 +525,7 @@
     .payment-details {
       margin: 1rem 0;
       padding: 1rem;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.03);
       border-radius: 8px;
     }
     
@@ -518,7 +534,7 @@
       justify-content: space-between;
       margin-bottom: 0.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #eee;
     }
     
     .payment-detail-item:last-child {
@@ -528,18 +544,18 @@
     }
     
     .payment-instruction {
-      background: rgba(220, 38, 38, 0.1);
+      background: rgba(204, 85, 0, 0.1);
       padding: 1rem;
       border-radius: 8px;
       margin-top: 1rem;
-      border-left: 4px solid #dc2626;
+      border-left: 4px solid var(--primary);
     }
     
     .confirm-payment-btn {
       display: block;
       width: 100%;
       padding: 1rem;
-      background: #dc2626;
+      background: var(--primary);
       color: white;
       border: none;
       border-radius: 8px;
@@ -551,11 +567,11 @@
     }
     
     .confirm-payment-btn:hover {
-      background: #991b1b;
+      background: var(--primary-dark);
     }
     
     .order-summary {
-      background: #252525;
+      background: #f9f9f9;
       border-radius: 12px;
       padding: 1.5rem;
       margin-bottom: 2rem;
@@ -566,7 +582,7 @@
       justify-content: space-between;
       margin-bottom: 0.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #eee;
     }
     
     .order-total {
@@ -576,7 +592,7 @@
       font-size: 1.2rem;
       margin-top: 1rem;
       padding-top: 1rem;
-      border-top: 2px solid #dc2626;
+      border-top: 2px solid var(--primary);
     }
     
     /* Exclusive Bundles Section Styles */
@@ -590,15 +606,15 @@
     
     .bundles-title {
       font-size: 3.5rem;
-      color: #ff3860;
+      color: var(--primary);
       margin-bottom: 15px;
-      text-shadow: 0 0 20px rgba(255, 56, 96, 0.7);
+      text-shadow: 0 0 20px rgba(204, 85, 0, 0.7);
       letter-spacing: 2px;
     }
     
     .bundles-subtitle {
       font-size: 1.2rem;
-      color: #aaa;
+      color: #666;
       margin-bottom: 30px;
     }
     
@@ -612,11 +628,11 @@
     }
     
     .bundle-card {
-      background: linear-gradient(145deg, #1a1a2e, #16213e);
+      background: linear-gradient(145deg, #E6F4F7, #C4E8F0);
       border-radius: 16px;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s, box-shadow 0.4s;
       display: flex;
       flex-direction: column;
@@ -626,7 +642,7 @@
     
     .bundle-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(255, 56, 96, 0.3);
+      box-shadow: 0 15px 35px rgba(204, 85, 0, 0.3);
     }
     
     .bundle-product-container {
@@ -642,7 +658,7 @@
       position: relative;
       transform-style: preserve-3d;
       border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
     
     .bundle-product-front, .bundle-product-back {
@@ -655,23 +671,24 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      background: #000;
+      background: #fff;
     }
     
     .bundle-product-back {
       transform: rotateY(180deg);
-      background: linear-gradient(45deg, #2c3e50, #4a235a);
+      background: linear-gradient(45deg, var(--secondary), #0080A0);
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 20px;
       text-align: left;
+      color: white;
     }
     
     .bundle-product-back h3 {
       font-size: 1.5rem;
       margin-bottom: 15px;
-      color: #ff3860;
+      color: #fff;
       text-align: center;
     }
     
@@ -704,7 +721,7 @@
     .bundle-card h2 {
       font-size: 1.6rem;
       margin: 15px 0;
-      color: #fff;
+      color: var(--secondary);
     }
     
     .bundle-price-container {
@@ -716,13 +733,13 @@
     
     .bundle-original-price {
       font-size: 1.1rem;
-      color: #aaa;
+      color: #777;
       text-decoration: line-through;
     }
     
     .bundle-sale-price {
       font-size: 1.4rem;
-      color: #ff3860;
+      color: var(--primary);
       font-weight: bold;
     }
     
@@ -730,7 +747,7 @@
       display: inline-block;
       padding: 14px 30px;
       margin-top: 15px;
-      background: linear-gradient(45deg, #ff3860, #ff2b56);
+      background: linear-gradient(45deg, var(--primary), #E3712A);
       color: white;
       font-size: 1.1rem;
       font-weight: bold;
@@ -739,13 +756,13 @@
       cursor: pointer;
       text-decoration: none;
       transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(255, 56, 96, 0.4);
+      box-shadow: 0 5px 15px rgba(204, 85, 0, 0.4);
     }
     
     .bundle-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(255, 56, 96, 0.6);
-      background: linear-gradient(45deg, #ff2b56, #ff3860);
+      box-shadow: 0 8px 25px rgba(204, 85, 0, 0.6);
+      background: linear-gradient(45deg, #E3712A, var(--primary));
     }
     
     .bundle-card.active .bundle-product {
@@ -775,7 +792,7 @@
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
       background-position: right 1rem center;
       background-size: 1em;
@@ -783,208 +800,20 @@
     
     select:focus {
       outline: none;
-      border-color: #dc2626;
-      box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(204, 85, 0, 0.2);
     }
 
-    /* Chatbot Styles */
+    /* Chatbot Styles - Removed as requested */
     .chatbot-container {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 350px;
-      height: 500px;
-      background: #1a1a1a;
-      border-radius: 16px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      z-index: 999;
-      overflow: hidden;
-      border: 2px solid #dc2626;
-      transform: translateY(100%);
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    
-    .chatbot-container.open {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .chatbot-header {
-      background: #dc2626;
-      color: white;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .chatbot-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .chatbot-title img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-    }
-    
-    .chatbot-close {
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-    
-    .chatbot-messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    
-    .message {
-      max-width: 80%;
-      padding: 10px 15px;
-      border-radius: 18px;
-      margin-bottom: 10px;
-      position: relative;
-      line-height: 1.5;
-    }
-    
-    .bot-message {
-      background: #2d2d2d;
-      color: white;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    
-    .user-message {
-      background: #dc2626;
-      color: white;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .chatbot-input {
-      display: flex;
-      padding: 15px;
-      border-top: 1px solid #333;
-      background: #1a1a1a;
-    }
-    
-    .chatbot-input input {
-      flex: 1;
-      padding: 12px;
-      border: 1px solid #333;
-      border-radius: 20px;
-      background: #2d2d2d;
-      color: white;
-      outline: none;
-    }
-    
-    .chatbot-input button {
-      background: #dc2626;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      margin-left: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: none;
     }
     
     .chatbot-toggle {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
-      background: #dc2626;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-      z-index: 1000;
-      animation: pulse 2s infinite;
-    }
-    
-    .chatbot-toggle i {
-      font-size: 24px;
-    }
-    
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    
-    .quick-reply {
-      background: #333;
-      color: white;
-      border: none;
-      border-radius: 16px;
-      padding: 8px 12px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    
-    .quick-reply:hover {
-      background: #dc2626;
-    }
-    
-    .typing-indicator {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 10px 15px;
-      background: #2d2d2d;
-      border-radius: 18px;
-      align-self: flex-start;
-      margin-bottom: 10px;
-      max-width: 80px;
-    }
-    
-    .typing-dot {
-      width: 8px;
-      height: 8px;
-      background: #999;
-      border-radius: 50%;
-      animation: typingAnimation 1.4s infinite ease-in-out;
-    }
-    
-    .typing-dot:nth-child(1) { animation-delay: 0s; }
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    
-    @keyframes typingAnimation {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-5px); }
+      display: none;
     }
     
     @media (max-width: 768px) {
-      .chatbot-container {
-        width: 90%;
-        height: 70%;
-        right: 5%;
-        bottom: 80px;
-      }
-      
       .bundles-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 25px;
@@ -1023,63 +852,159 @@
         white-space: normal;
       }
     }
+
+    /* Review Section Styles */
+    .review-form-container {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .reviews-container {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      max-height: 500px;
+      overflow-y: auto;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: white;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 16px;
+    }
+
+    .success-message {
+      background: rgba(0, 200, 0, 0.2);
+      color: #4CAF50;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+      border: 1px solid #4CAF50;
+    }
+
+    .review-item {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .username {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .rating {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .review-text {
+      color: #444;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .product {
+      color: #666;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      color: #777;
+      font-size: 13px;
+    }
   </style>
 </head>
-<body class="min-h-screen bg-black text-white no-context" oncontextmenu="return false">
+<body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-red-600">
+  <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
     <div class="container py-3 flex items-center justify-between">
       <a href="#home" class="font-extrabold text-xl text-white flex items-center no-select">
-        <span class="text-red-600 mr-1">🔥</span> GROWZIO
+        <span class="text-primary mr-1">🔥</span> GROWZIO
       </a>
 
       <!-- Desktop Nav -->
       <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
-        <a href="#home" class="nav-link hover:text-red-500 no-select">Home</a>
-        <a href="#about" class="nav-link hover:text-red-500 no-select">About</a>
-        <a href="#apps" class="nav-link hover:text-red-500 no-select">Premium Apps</a>
-        <a href="#vpns" class="nav-link hover:text-red-500 no-select">Premium VPNs</a>
-        <a href="#iptv" class="nav-link hover:text-red-500 no-select">IPTV</a>
-        <a href="#games" class="nav-link hover:text-red-500 no-select">Games</a>
-        <a href="#bundles" class="nav-link hover:text-red-500 no-select">Exclusive Bundles</a>
-        <a href="#blog" class="nav-link hover:text-red-500 no-select">Blog</a>
-        <a href="#contact" class="nav-link hover:text-red-500 no-select">Contact</a>
+        <a href="#home" class="nav-link hover:text-primary no-select">Home</a>
+        <a href="#about" class="nav-link hover:text-primary no-select">About</a>
+        <a href="#apps" class="nav-link hover:text-primary no-select">Premium Apps</a>
+        <a href="#iptv" class="nav-link hover:text-primary no-select">IPTV</a>
+        <a href="#games" class="nav-link hover:text-primary no-select">Games</a>
+        <a href="#bundles" class="nav-link hover:text-primary no-select">Exclusive Bundles</a>
+        <a href="#contact" class="nav-link hover:text-primary no-select">Contact</a>
       </nav>
 
       <!-- Mobile Buttons -->
       <div class="md:hidden flex items-center gap-2">
-        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
+        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
           <i class="fa-solid fa-cart-shopping"></i>
           <span class="sr-only">Cart</span>
-          <span id="cart-count-mobile" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
+          <span id="cart-count-mobile" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
         </button>
-        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-red-600">
+        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-primary text-primary">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
 
       <!-- Cart Button (desktop) -->
       <div class="hidden md:flex items-center gap-2">
-        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
+        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
           <i class="fa-solid fa-cart-shopping"></i>
           <span class="sr-only">Cart</span>
-          <span id="cart-count" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
+          <span id="cart-count" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
         </button>
       </div>
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="bg-gray-900 border-t border-red-700 md:hidden">
+    <div id="mobile-menu" class="bg-secondary-dark border-t border-primary md:hidden">
       <div class="px-4 py-3 flex flex-col gap-2">
         <a href="#home" class="py-2 nav-link no-select">Home</a>
         <a href="#about" class="py-2 nav-link no-select">About</a>
         <a href="#apps" class="py-2 nav-link no-select">Premium Apps</a>
-        <a href="#vpns" class="py-2 nav-link no-select">Premium VPNs</a>
         <a href="#iptv" class="py-2 nav-link no-select">IPTV</a>
         <a href="#games" class="py-2 nav-link no-select">Games</a>
         <a href="#bundles" class="py-2 nav-link no-select">Exclusive Bundles</a>
-        <a href="#blog" class="py-2 nav-link no-select">Blog</a>
         <a href="#contact" class="py-2 nav-link no-select">Contact</a>
       </div>
     </div>
@@ -1108,29 +1033,29 @@
           </div>
         </div>
       </div>
-      <a href="#apps" class="ml-4 bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm font-medium transition">SHOP NOW</a>
+      <a href="#apps" class="ml-4 bg-primary hover:bg-primary-dark px-3 py-1 rounded text-sm font-medium transition">SHOP NOW</a>
     </div>
   </div>
 
   <!-- Cart Modal - Increased size -->
-  <dialog id="cart-modal" class="rounded-xl p-6 bg-gray-900 text-white max-w-3xl w-full">
+  <dialog id="cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-3xl w-full shadow-xl">
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-2xl font-bold">YOUR CART</h2>
-      <button onclick="document.getElementById('cart-modal').close()" class="text-gray-400 hover:text-white">
+      <button onclick="document.getElementById('cart-modal').close()" class="text-gray-500 hover:text-dark">
         <i class="fa-solid fa-times text-xl"></i>
       </button>
     </div>
     
     <div id="cart-items" class="space-y-3 mb-4 max-h-96 overflow-y-auto p-2"></div>
     
-    <div class="border-t border-gray-700 pt-4 mb-4">
+    <div class="border-t border-gray-300 pt-4 mb-4">
       <p class="font-bold text-xl">Total: <span id="cart-total">0</span> PKR</p>
     </div>
 
     <!-- Payment Method Dropdown -->
     <div class="mb-4">
       <label for="payment-method" class="block mb-2 font-medium">Select Payment Method:</label>
-      <select id="payment-method" class="w-full p-3 rounded bg-gray-800 border border-gray-700 text-white">
+      <select id="payment-method" class="w-full p-3 rounded bg-white border border-gray-300 text-dark">
         <option value="">-- Select Payment Method --</option>
         <option value="jazzcash">JazzCash</option>
         <option value="easypaisa">Easypaisa</option>
@@ -1139,21 +1064,21 @@
     </div>
 
     <div class="flex justify-between gap-4">
-      <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-700 hover:bg-gray-600 transition flex-1">Continue Shopping</button>
-      <button id="proceed-to-payment" class="px-6 py-3 rounded bg-red-600 hover:bg-red-700 transition flex-1">Proceed to Checkout</button>
+      <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-200 hover:bg-gray-300 transition flex-1">Continue Shopping</button>
+      <button id="proceed-to-payment" class="px-6 py-3 rounded bg-primary hover:bg-primary-dark text-white transition flex-1">Proceed to Checkout</button>
     </div>
   </dialog>
 
   <!-- Added to Cart Modal -->
-  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-gray-900 text-white max-w-md w-full">
+  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl">
     <div class="text-center">
       <i class="fa-solid fa-check-circle text-green-500 text-5xl mb-4"></i>
       <h2 class="text-xl font-bold mb-2">Item Added to Cart!</h2>
-      <p class="text-gray-300 mb-6" id="added-item-name">Your item has been successfully added to your cart.</p>
+      <p class="text-gray-600 mb-6" id="added-item-name">Your item has been successfully added to your cart.</p>
       
       <div class="flex justify-center gap-4">
-        <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-700">OK</button>
-        <button id="view-cart" class="px-4 py-2 rounded bg-red-600">View Cart</button>
+        <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
+        <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
       </div>
     </div>
   </dialog>
@@ -1161,14 +1086,14 @@
   <!-- Payment Page (initially hidden) -->
   <div id="payment-page" class="hidden">
     <!-- Header -->
-    <header class="header">
-      <div class="container mx-auto px-4 flex items-center justify-between">
+    <header class="header bg-secondary">
+      <div class="container mx-auto px-4 flex items-center justify-between py-3">
         <a href="#" class="font-extrabold text-xl text-white flex items-center">
-          <span class="text-red-600 mr-1">🔥</span> GROWZIO
+          <span class="text-primary mr-1">🔥</span> GROWZIO
         </a>
         
         <div class="flex items-center gap-4">
-          <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:text-green-400">
+          <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary">
             <i class="fa-brands fa-whatsapp text-2xl"></i>
           </a>
         </div>
@@ -1179,7 +1104,7 @@
     <div class="payment-container">
       <div class="text-center mb-6">
         <h1 class="text-3xl font-bold mb-2">Complete Your Payment</h1>
-        <p class="text-gray-400">Select your preferred payment method</p>
+        <p class="text-gray-600">Select your preferred payment method</p>
       </div>
       
       <!-- Order Summary -->
@@ -1267,17 +1192,17 @@
       <button class="confirm-payment-btn" onclick="confirmPayment()">I've Made the Payment</button>
       
       <div class="mt-4 text-center">
-        <button onclick="goBackToShopping()" class="text-red-500 hover:underline">
+        <button onclick="goBackToShopping()" class="text-primary hover:underline">
           <i class="fa-solid fa-arrow-left mr-2"></i> Back to Shopping
         </button>
       </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer bg-secondary text-white py-6">
       <div class="container mx-auto px-4 text-center">
-        <p class="text-gray-400">© 2025 GROWZIO. All rights reserved.</p>
-        <p class="text-gray-500 mt-2">WhatsApp: +92 319 5179084</p>
+        <p>© 2025 GROWZIO. All rights reserved.</p>
+        <p class="text-gray-300 mt-2">WhatsApp: +92 319 5179084</p>
       </div>
     </footer>
 
@@ -1287,99 +1212,65 @@
     </a>
   </div>
 
-  <!-- Chatbot Toggle Button -->
-  <div class="chatbot-toggle" id="chatbot-toggle">
-    <i class="fas fa-robot"></i>
-  </div>
-
-  <!-- Chatbot Container -->
-  <div class="chatbot-container" id="chatbot-container">
-    <div class="chatbot-header">
-      <div class="chatbot-title">
-        <span>🔥</span>
-        <span>Growzio Assistant</span>
-      </div>
-      <button class="chatbot-close" id="chatbot-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="chatbot-messages" id="chatbot-messages">
-      <div class="message bot-message">
-        Hi there! 👋 I'm your Growzio assistant. How can I help you today?
-        <div class="quick-replies">
-          <button class="quick-reply" data-message="Tell me about your services">Services</button>
-          <button class="quick-reply" data-message="How to make payment">Payment</button>
-          <button class="quick-reply" data-message="Do you offer discounts?">Discounts</button>
-        </div>
-      </div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatbot-input" placeholder="Type your message here..." />
-      <button id="chatbot-send">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
-
   <!-- Main Website Content (initially visible) -->
   <div id="main-content">
     <!-- Hero -->
-    <section id="home" class="section relative bg-gradient-to-br from-black to-gray-900 text-white">
+    <section id="home" class="section relative bg-gradient-to-br from-secondary to-secondary-dark text-white">
       <div class="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services background" class="w-full h-full object-cover opacity-10">
       </div>
       <div class="container text-center">
-        <h1 class="section-title mb-4" data-aos="fade-down" data-aos-duration="1000">
-          <span class="gradient-text">Premium Apps & VPNs</span> in Pakistan at Lowest Prices
+        <h1 class="section-title mb-4 text-white" data-aos="fade-down" data-aos-duration="1000">
+          <span class="gradient-text">Premium Apps & Services</span> in Pakistan at Lowest Prices
         </h1>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get 100% genuine Netflix Premium, Spotify, Canva Pro, ExpressVPN, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
+        <p class="section-subtitle text-gray-200" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get 100% genuine Netflix Premium, Canva Pro, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
 
         <!-- Trust badges -->
         <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <div class="trust-badge float-animation">
-            <i class="fa-solid fa-bolt text-red-500 text-2xl mb-2"></i>
+            <i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i>
             <p class="text-sm">Instant Delivery</p>
           </div>
           <div class="trust-badge float-animation" style="animation-delay: 0.5s;">
-            <i class="fa-solid fa-shield-halved text-red-500 text-2xl mb-2"></i>
+            <i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i>
             <p class="text-sm">100% Genuine</p>
           </div>
           <div class="trust-badge float-animation" style="animation-delay: 1s;">
-            <i class="fa-solid fa-headset text-red-500 text-2xl mb-2"></i>
+            <i class="fa-solid fa-headset text-primary text-2xl mb-2"></i>
             <p class="text-sm">24/7 Support</p>
           </div>
           <div class="trust-badge float-animation" style="animation-delay: 1.5s;">
-            <i class="fa-solid fa-lock text-red-500 text-2xl mb-2"></i>
+            <i class="fa-solid fa-lock text-primary text-2xl mb-2"></i>
             <p class="text-sm">Secure Payment</p>
           </div>
         </div>
 
-        <div class="mb-6 bg-red-600/20 border border-red-500 rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-          <span class="font-bold text-red-300">🔥 Special Limited Offer: 30% OFF on all services!</span>
+        <div class="mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+          <span class="font-bold text-primary">🔥 Special Limited Offer: 30% OFF on all services!</span>
         </div>
         <br>
         <div class="flex flex-col sm:flex-row justify-center gap-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
           <a href="#apps" class="btn shine mb-3 sm:mb-0">Browse All Products</a>
-          <a href="#about" class="btn btn-outline">Learn More</a>
+          <a href="#about" class="btn btn-outline text-white border-white hover:text-dark">Learn More</a>
         </div>
       </div>
     </section>
 
     <!-- About -->
-    <section id="about" class="section bg-gray-900">
+    <section id="about" class="section bg-white">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">ABOUT GROWZIO</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">GROWZIO is your trusted digital store for <strong>premium apps, VPNs, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Spotify, Canva Pro, ExpressVPN, NordVPN</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">GROWZIO is your trusted digital store for <strong>premium apps, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Canva Pro</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
         
         <div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
           <div class="text-left" data-aos="fade-right">
             <h3 class="text-2xl font-bold mb-4">Why Choose Us?</h3>
             <ul class="space-y-3">
-              <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>100% genuine subscriptions with warranty</span></li>
-              <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>Instant delivery after payment confirmation</span></li>
-              <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>Secure payment methods (JazzCash, Easypaisa, Binance)</span></li>
-              <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>24/7 customer support via WhatsApp</span></li>
-              <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>Competitive prices with regular discounts</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>100% genuine subscriptions with warranty</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Instant delivery after payment confirmation</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Secure payment methods (JazzCash, Easypaisa, Binance)</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>24/7 customer support via WhatsApp</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Competitive prices with regular discounts</span></li>
             </ul>
           </div>
           <div data-aos="fade-left">
@@ -1390,33 +1281,33 @@
     </section>
 
     <!-- How It Works -->
-    <section class="section">
+    <section class="section bg-lightbg">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">How It Works</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Getting your premium digital services is quick and easy with our simple process</p>
         
         <div class="grid md:grid-cols-3 gap-8">
           <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-            <div class="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
             <h3 class="font-bold mb-2 text-xl">Select Product</h3>
-            <p class="text-gray-400">Choose from our wide range of premium apps, VPNs, IPTV & gaming services</p>
+            <p class="text-gray-600">Choose from our wide range of premium apps, IPTV & gaming services</p>
           </div>
           <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-            <div class="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
             <h3 class="font-bold mb-2 text-xl">Make Payment</h3>
-            <p class="text-gray-400">Pay easily via JazzCash, Easypaisa, or Binance with secure transaction</p>
+            <p class="text-gray-600">Pay easily via JazzCash, Easypaisa, or Binance with secure transaction</p>
           </div>
           <div class="text-center" data-aos="fade-up" data-aos-delay="500">
-            <div class="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
             <h3 class="font-bold mb-2 text-xl">Receive Instantly</h3>
-            <p class="text-gray-400">Get your product credentials instantly via WhatsApp after payment verification</p>
+            <p class="text-gray-600">Get your product credentials instantly via WhatsApp after payment verification</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Products -->
-    <section id="apps" class="section bg-gray-900">
+    <section id="apps" class="section bg-white">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">PREMIUM APPS SUBSCRIPTIONS</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
@@ -1424,15 +1315,7 @@
       </div>
     </section>
 
-    <section id="vpns" class="section">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">PREMIUM VPNS</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Fast, secure & unlimited bandwidth VPNs for browsing, streaming and privacy</p>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="vpns-list"></div>
-      </div>
-    </section>
-
-    <section id="iptv" class="section bg-gray-900">
+    <section id="iptv" class="section bg-lightbg">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">IPTV SERVICES</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">10,000+ channels & VOD with up to 4K support for all your entertainment needs</p>
@@ -1440,7 +1323,7 @@
       </div>
     </section>
 
-    <section id="games" class="section">
+    <section id="games" class="section bg-white">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">GAMES SERVICES</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Instant game top-ups & currency for your favorite mobile games</p>
@@ -1449,11 +1332,11 @@
     </section>
 
     <!-- Exclusive Bundles Section -->
-    <section id="bundles" class="section bg-gray-900">
+    <section id="bundles" class="section bg-lightbg">
       <div class="container">
         <div class="bundles-header" data-aos="fade-up">
           <h1 class="bundles-title">🔥 OUR EXCLUSIVE BUNDLES 🔥</h1>
-          <p class="bundles-subtitle">Premium digital resources at unbeatable prices for creators, developers, and fitness enthusiasts</p>
+          <p class="bundles-subtitle">Premium digital resources at unbeatable prices for creators and developers</p>
         </div>
         
         <div class="bundles-grid">
@@ -1485,62 +1368,6 @@
             <button class="bundle-btn add-to-cart" data-name="200 GB Editing Pack" data-price="300">Add to Cart</button>
           </div>
 
-          <!-- Bundle 2 -->
-          <div class="bundle-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="bundle-product-container">
-              <div class="bundle-product">
-                <div class="bundle-product-front">
-                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRyCMBYBp-1IOAuh2zSZK51Ux86Zuz1cfLbUjT9wszATzwLnym_CehTPj28DCE-zWYOR9AhCTRQ11kaws3Dd4yJ4xIoLT0gwTkaFRL-o723CkgFPdHE0hFyUWCeXiY8toK5qmAOxGk_gUbyRQ0ttRx3SAG9L3KkWOq9wEMln8Acxd_Dwjg6QxV5lVoCJ0/s320/Pc%20software.png" alt="PC Softwares">
-                </div>
-                <div class="bundle-product-back">
-                  <h3>What's Included</h3>
-                  <ul>
-                    <li>Productivity suite</li>
-                    <li>Creative software collection</li>
-                    <li>System utilities</li>
-                    <li>Security applications</li>
-                    <li>Media players & tools</li>
-                  </ul>
-                  <p>Everything you need for a fully-equipped PC!</p>
-                </div>
-              </div>
-            </div>
-            <h2>PC Softwares</h2>
-            <div class="bundle-price-container">
-              <div class="bundle-original-price">PKR 5000</div>
-              <div class="bundle-sale-price">PKR 500</div>
-            </div>
-            <button class="bundle-btn add-to-cart" data-name="PC Softwares" data-price="500">Add to Cart</button>
-          </div>
-
-          <!-- Bundle 3 -->
-          <div class="bundle-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="bundle-product-container">
-              <div class="bundle-product">
-                <div class="bundle-product-front">
-                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-bR3xd3aFVXw_EKPMmyNJVVMYUm49L-pocmI_I-Nf7t2E19E6KmL9NBRPFl5IrPHwthZS4dFO4JLOQrhP3cWd2BF1s_4xrR31Puv0yJwkoJ-YKJgVLy4kgz6rBuJAJ7WxdocyECgMSyQGjErUfqEWM54YsNfYXdcUWD9AVgkCSL_Jbsqu5k29KrNSad0/s320/gym%20motivation.png" alt="Gym Motivation">
-                </div>
-                <div class="bundle-product-back">
-                  <h3>What's Included</h3>
-                  <ul>
-                    <li>12-week workout plans</li>
-                    <li>Nutrition guides & recipes</li>
-                    <li>Motivational content library</li>
-                    <li>Progress tracking templates</li>
-                    <li>Supplement guidance</li>
-                  </ul>
-                  <p>Transform your fitness journey with our complete package!</p>
-                </div>
-              </div>
-            </div>
-            <h2>Gym Motivation</h2>
-            <div class="bundle-price-container">
-              <div class="bundle-original-price">PKR 5300</div>
-              <div class="bundle-sale-price">PKR 300</div>
-            </div>
-            <button class="bundle-btn add-to-cart" data-name="Gym Motivation" data-price="300">Add to Cart</button>
-          </div>
-
           <!-- Bundle 4 -->
           <div class="bundle-card" data-aos="fade-up" data-aos-delay="400">
             <div class="bundle-product-container">
@@ -1567,34 +1394,6 @@
               <div class="bundle-sale-price">PKR 300</div>
             </div>
             <button class="bundle-btn add-to-cart" data-name="3K+ Fitness Posts" data-price="300">Add to Cart</button>
-          </div>
-
-          <!-- Bundle 5 -->
-          <div class="bundle-card" data-aos="fade-up" data-aos-delay="500">
-            <div class="bundle-product-container">
-              <div class="bundle-product">
-                <div class="bundle-product-front">
-                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2cZqs0Lhkmh9dImF1m5KcIuMadMh8z3Tg7_a9gxgus-Kuj7sN7bR33jC8mOrhjh3buWIf_1pc1tIyBo56EWBEFYV4Ab3VvOlSIBkWyXgeZ0w1pyHceO0i8HwBR5LhmHPr6_rU08km9c2sqTUw2DYdeD63R_hYqOF45_NFBHAPm2IfusrDWquZ0Z9pJt8/s320/ai%20viral%20memes.png" alt="AI Viral Memes">
-                </div>
-                <div class="bundle-product-back">
-                  <h3>What's Included</h3>
-                  <ul>
-                    <li>AI-generated viral meme templates</li>
-                    <li>Trending content ideas</li>
-                    <li>Social media growth strategies</li>
-                    <li>Engagement boosting techniques</li>
-                    <li>Platform-specific optimization</li>
-                  </ul>
-                  <p>Go viral with AI-powered content creation!</p>
-                </div>
-              </div>
-            </div>
-            <h2>AI Viral Memes</h2>
-            <div class="bundle-price-container">
-              <div class="bundle-original-price">PKR 4300</div>
-              <div class="bundle-sale-price">PKR 300</div>
-            </div>
-            <button class="bundle-btn add-to-cart" data-name="AI Viral Memes" data-price="300">Add to Cart</button>
           </div>
 
           <!-- Bundle 6 -->
@@ -1624,372 +1423,91 @@
             </div>
             <button class="bundle-btn add-to-cart" data-name="HQ Quotes Images" data-price="300">Add to Cart</button>
           </div>
-
-          <!-- Bundle 7 -->
-          <div class="bundle-card" data-aos="fade-up" data-aos-delay="700">
-            <div class="bundle-product-container">
-              <div class="bundle-product">
-                <div class="bundle-product-front">
-                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzkAT5YZuKDtIBs-2kLYHfGRqJao81vAqvg0OKdjtiB9Uf9JXb20aqNsRT_84eeRblxuxiWC6FcJ-WQNg4Ytid3gWuZ3_-Qemfy1ZsTUeCbMr4xTNPPBZZp7_M0r63ytfJljOn7ZCpAhbF8lF8LGPl2L9I6lFbfD-1kGFUN_jXRbfTSyIbrtM4IsZXDO0/s320/5k%20editable%20post.png" alt="5K Editable Posts">
-                </div>
-                <div class="bundle-product-back">
-                  <h3>What's Included</h3>
-                  <ul>
-                    <li>5000+ editable social media templates</li>
-                    <li>Multiple niche categories</li>
-                    <li>Customizable designs</li>
-                    <li>Source files included</li>
-                    <li>Regular content updates</li>
-                  </ul>
-                  <p>Never run out of social media content again!</p>
-                </div>
-              </div>
-            </div>
-            <h2>5K Editable Posts</h2>
-            <div class="bundle-price-container">
-              <div class="bundle-original-price">PKR 9000</div>
-              <div class="bundle-sale-price">PKR 300</div>
-            </div>
-            <button class="bundle-btn add-to-cart" data-name="5K Editable Posts" data-price="300">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up">LATEST BLOG POSTS</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Helpful guides and information about digital services, VPNs, and entertainment</p>
-        
-        <div class="grid md:grid-cols-3 gap-6">
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Benefits of using VPN">
-            <div class="blog-card-content">
-              <h3 class="text-xl font-bold mb-2">5 Benefits of Using a VPN in Pakistan</h3>
-              <p class="text-gray-400 mb-4">Discover why using a VPN is essential for privacy, security, and accessing global content from Pakistan.</p>
-              <a href="#" class="text-red-500 font-semibold">Read More →</a>
-            </div>
-          </article>
-          
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="400">
-            <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=500&q=80" alt="Netflix premium guide">
-            <div class="blog-card-content">
-              <h3 class="text-xl font-bold mb-2">How to Get Netflix Premium at Lowest Cost</h3>
-              <p class="text-gray-400 mb-4">Learn how to enjoy Netflix Premium with 4K streaming at the most affordable prices in Pakistan.</p>
-              <a href="#" class="text-red-500 font-semibold">Read More →</a>
-            </div>
-          </article>
-          
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="500">
-            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=500&q=80" alt="IPTV explained">
-            <div class="blog-card-content">
-              <h3 class="text-xl font-bold mb-2">What is IPTV and How Does It Work?</h3>
-              <p class="text-gray-400 mb-4">A complete guide to understanding IPTV services, their benefits, and how to choose the right one.</p>
-              <a href="#" class="text-red-500 font-semibold">Read More →</a>
-            </div>
-          </article>
-        </div>
-        
-        <div class="text-center mt-10" data-aos="fade-up">
-          <a href="#" class="btn">View All Blog Posts</a>
         </div>
       </div>
     </section>
 
     <!-- Customer Reviews Section -->
-<section id="reviews" class="section">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">CUSTOMER REVIEWS</h2>
-    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">See what our customers are saying about our products and services</p>
-    
-    <div class="bg-gray-900 rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Review Form -->
-        <div class="review-form-container">
-          <h3 class="text-xl font-bold mb-4 text-red-500">Submit Your Review</h3>
-          <div class="success-message" id="successMessage" style="display: none;">
-            Thank you for your review!
-          </div>
-          
-          <form id="reviewForm">
-            <div class="form-group">
-              <label for="username" class="block mb-2 font-medium"><i class="fas fa-user mr-2"></i>Username</label>
-              <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="product" class="block mb-2 font-medium"><i class="fas fa-box mr-2"></i>Product/Service</label>
-              <select id="product" class="form-control" required>
-                <option value="">Select a product/service</option>
-                <optgroup label="Streaming Services">
-                  <option value="YouTube Premium">YouTube Premium</option>
-                  <option value="Spotify Premium">Spotify Premium</option>
-                  <option value="Netflix Premium">Netflix Premium</option>
-                  <option value="Prime Video">Prime Video</option>
-                  <option value="Apple Music">Apple Music</option>
-                </optgroup>
-                <optgroup label="Creative Tools">
-                  <option value="CapCut Pro">CapCut Pro</option>
-                  <option value="Canva Pro">Canva Pro</option>
-                </optgroup>
-                <optgroup label="Productivity Tools">
-                  <option value="Grammarly Premium">Grammarly Premium</option>
-                  <option value="ChatGPT Plus">ChatGPT Plus</option>
-                </optgroup>
-                <optgroup label="VPN Services">
-                  <option value="ExpressVPN">ExpressVPN</option>
-                  <option value="NordVPN">NordVPN</option>
-                  <option value="ProtonVPN">ProtonVPN</option>
-                  <option value="CyberGhost">CyberGhost</option>
-                  <option value="Surfshark">Surfshark</option>
-                  <option value="IPVanish">IPVanish</option>
-                </optgroup>
-                <optgroup label="Content Packs">
-                  <option value="200 GB Editing Pack">200 GB Editing Pack</option>
-                  <option value="PC Softwares">PC Softwares</option>
-                  <option value="Gym Motivation">Gym Motivation</option>
-                  <option value="3K+ Fitness Posts">3K+ Fitness Posts</option>
-                  <option value="AI Viral Memes">AI Viral Memes</option>
-                  <option value="HQ Quotes Images">HQ Quotes Images</option>
-                  <option value="5K Editable Posts">5K Editable Posts</option>
-                </optgroup>
-                <optgroup label="TV Services">
-                  <option value="Rolex TV">Rolex TV</option>
-                  <option value="Bos TV">Bos TV</option>
-                  <option value="Zain TV">Zain TV</option>
-                </optgroup>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="rating" class="block mb-2 font-medium"><i class="fas fa-star mr-2"></i>Rating</label>
-              <select id="rating" class="form-control" required>
-                <option value="">Select your rating</option>
-                <option value="5">★★★★★ - Excellent</option>
-                <option value="4">★★★★ - Very Good</option>
-                <option value="3">★★★ - Good</option>
-                <option value="2">★★ - Fair</option>
-                <option value="1">★ - Poor</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="reviewText" class="block mb-2 font-medium"><i class="fas fa-comment mr-2"></i>Review (Optional)</label>
-              <textarea id="reviewText" class="form-control" rows="3" placeholder="Share your experience..."></textarea>
-            </div>
-            
-            <button type="submit" class="btn w-full bg-red-600 hover:bg-red-700"><i class="fas fa-paper-plane mr-2"></i>Submit Review</button>
-          </form>
-        </div>
+    <section id="reviews" class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">CUSTOMER REVIEWS</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">See what our customers are saying about our products and services</p>
         
-        <!-- Reviews Display -->
-        <div class="reviews-container">
-          <h3 class="text-xl font-bold mb-4 text-red-500">Recent Reviews</h3>
-          <div id="reviewsList" class="space-y-4">
-            <!-- Reviews will be displayed here -->
+        <div class="bg-lightbg rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Review Form -->
+            <div class="review-form-container">
+              <h3 class="text-xl font-bold mb-4 text-primary">Submit Your Review</h3>
+              <div class="success-message" id="successMessage" style="display: none;">
+                Thank you for your review!
+              </div>
+              
+              <form id="reviewForm">
+                <div class="form-group">
+                  <label for="username" class="block mb-2 font-medium"><i class="fas fa-user mr-2"></i>Username</label>
+                  <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="product" class="block mb-2 font-medium"><i class="fas fa-box mr-2"></i>Product/Service</label>
+                  <select id="product" class="form-control" required>
+                    <option value="">Select a product/service</option>
+                    <optgroup label="Streaming Services">
+                      <option value="Netflix Premium">Netflix Premium</option>
+                      <option value="Prime Video">Prime Video</option>
+                    </optgroup>
+                    <optgroup label="Creative Tools">
+                      <option value="CapCut Pro">CapCut Pro</option>
+                      <option value="Canva Pro">Canva Pro</option>
+                    </optgroup>
+                    <optgroup label="Content Packs">
+                      <option value="200 GB Editing Pack">200 GB Editing Pack</option>
+                      <option value="3K+ Fitness Posts">3K+ Fitness Posts</option>
+                      <option value="HQ Quotes Images">HQ Quotes Images</option>
+                    </optgroup>
+                    <optgroup label="TV Services">
+                      <option value="Rolex TV">Rolex TV</option>
+                      <option value="Bos TV">Bos TV</option>
+                      <option value="Zain TV">Zain TV</option>
+                    </optgroup>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="rating" class="block mb-2 font-medium"><i class="fas fa-star mr-2"></i>Rating</label>
+                  <select id="rating" class="form-control" required>
+                    <option value="">Select your rating</option>
+                    <option value="5">★★★★★ - Excellent</option>
+                    <option value="4">★★★★ - Very Good</option>
+                    <option value="3">★★★ - Good</option>
+                    <option value="2">★★ - Fair</option>
+                    <option value="1">★ - Poor</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="reviewText" class="block mb-2 font-medium"><i class="fas fa-comment mr-2"></i>Review (Optional)</label>
+                  <textarea id="reviewText" class="form-control" rows="3" placeholder="Share your experience..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn w-full bg-primary hover:bg-primary-dark"><i class="fas fa-paper-plane mr-2"></i>Submit Review</button>
+              </form>
+            </div>
+            
+            <!-- Reviews Display -->
+            <div class="reviews-container">
+              <h3 class="text-xl font-bold mb-4 text-primary">Recent Reviews</h3>
+              <div id="reviewsList" class="space-y-4">
+                <!-- Reviews will be displayed here -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Add this CSS to your existing style section -->
-<style>
-.review-form-container {
-  padding: 1.5rem;
-  background: #1a1a1a;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.reviews-container {
-  padding: 1.5rem;
-  background: #1a1a1a;
-  border-radius: 8px;
-  max-height: 500px;
-  overflow-y: auto;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #333;
-  border-radius: 6px;
-  background-color: #2d2d2d;
-  color: #fff;
-  font-size: 1rem;
-}
-
-select.form-control {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  background-size: 16px;
-}
-
-.success-message {
-  background: rgba(0, 200, 0, 0.2);
-  color: #4CAF50;
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  text-align: center;
-  border: 1px solid #4CAF50;
-}
-
-.review-item {
-  padding: 15px;
-  border-bottom: 1px solid #333;
-  margin-bottom: 15px;
-  background: #252525;
-  border-radius: 8px;
-}
-
-.review-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-.username {
-  font-weight: 600;
-  color: #ff3b30;
-}
-
-.rating {
-  color: #ffcc00;
-  font-weight: 600;
-}
-
-.review-text {
-  color: #ddd;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.product {
-  color: #aaa;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.review-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  color: #777;
-  font-size: 13px;
-}
-</style>
-
-<!-- Add this JavaScript before the closing </body> tag -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const reviewForm = document.getElementById('reviewForm');
-  const reviewsList = document.getElementById('reviewsList');
-  const successMessage = document.getElementById('successMessage');
-  
-  // Load existing reviews from localStorage
-  loadReviews();
-  
-  // Handle form submission
-  reviewForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const product = document.getElementById('product').value;
-    const rating = document.getElementById('rating').value;
-    const reviewText = document.getElementById('reviewText').value;
-    
-    // Create review object
-    const review = {
-      username,
-      product,
-      rating,
-      reviewText,
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-      id: Date.now() // Add unique ID for each review
-    };
-    
-    // Add to all reviews list
-    saveReviewToAll(review);
-    
-    // Add review to the page
-    addReviewToPage(review);
-    
-    // Show success message
-    successMessage.style.display = 'block';
-    
-    // Reset form
-    reviewForm.reset();
-    
-    // Hide success message after 3 seconds
-    setTimeout(() => {
-      successMessage.style.display = 'none';
-    }, 3000);
-  });
-  
-  function saveReviewToAll(review) {
-    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
-    reviews.push(review);
-    localStorage.setItem('allReviews', JSON.stringify(reviews));
-  }
-  
-  function loadReviews() {
-    const reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
-    
-    if (reviews.length === 0) {
-      reviewsList.innerHTML = '<div class="review-item"><div class="review-text">No reviews yet. Be the first to review!</div></div>';
-      return;
-    }
-    
-    // Show reviews in reverse chronological order
-    reviews.reverse().forEach(review => {
-      addReviewToPage(review);
-    });
-  }
-  
-  function addReviewToPage(review) {
-    const reviewItem = document.createElement('div');
-    reviewItem.classList.add('review-item');
-    
-    // Convert rating to stars
-    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-    
-    reviewItem.innerHTML = `
-      <div class="review-header">
-        <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
-        <span class="rating">${stars}</span>
-      </div>
-      <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
-      ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
-      <div class="review-meta">
-        <span><i class="far fa-calendar"></i> ${review.date}</span>
-        <span><i class="far fa-clock"></i> ${review.time}</span>
-      </div>
-    `;
-    
-    reviewsList.prepend(reviewItem);
-  }
-});
-</script>
+    </section>
 
     <!-- FAQ -->
-    <section class="section">
+    <section class="section bg-lightbg">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our products and services</p>
@@ -1998,45 +1516,45 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
             <div class="faq-question">
               <h3 class="font-medium text-lg">How quickly will I receive my product after payment?</h3>
-              <i class="fa-solid fa-chevron-down text-red-500"></i>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
             </div>
-            <div class="faq-answer mt-2 text-gray-400 hidden">
+            <div class="faq-answer mt-2 text-gray-600 hidden">
               <p>We provide instant delivery! You'll receive your product credentials within minutes after successful payment verification. In most cases, delivery takes less than 5 minutes during business hours.</p>
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
             <div class="faq-question">
               <h3 class="font-medium text-lg">Are these subscriptions genuine?</h3>
-              <i class="fa-solid fa-chevron-down text-red-500"></i>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
             </div>
-            <div class="faq-answer mt-2 text-gray-400 hidden">
+            <div class="faq-answer mt-2 text-gray-600 hidden">
               <p>Yes, all our subscriptions are 100% genuine and come with warranty. We source our products directly from official partners and authorized resellers.</p>
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
             <div class="faq-question">
               <h3 class="font-medium text-lg">What payment methods do you accept?</h3>
-              <i class="fa-solid fa-chevron-down text-red-500"></i>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
             </div>
-            <div class="faq-answer mt-2 text-gray-400 hidden">
+            <div class="faq-answer mt-2 text-gray-600 hidden">
               <p>We accept JazzCash, Easypaisa, and Binance payments for customer convenience. All payments are secure and verified.</p>
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
             <div class="faq-question">
               <h3 class="font-medium text-lg">Do you offer refunds?</h3>
-              <i class="fa-solid fa-chevron-down text-red-500"></i>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
             </div>
-            <div class="faq-answer mt-2 text-gray-400 hidden">
+            <div class="faq-answer mt-2 text-gray-600 hidden">
               <p>We offer refunds in case of service failure or if the product doesn't work as described. Please contact our support within 24 hours of purchase for refund requests.</p>
             </div>
           </div>
           <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
             <div class="faq-question">
               <h3 class="font-medium text-lg">How can I contact customer support?</h3>
-              <i class="fa-solid fa-chevron-down text-red-500"></i>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
             </div>
-            <div class="faq-answer mt-2 text-gray-400 hidden">
+            <div class="faq-answer mt-2 text-gray-600 hidden">
               <p>Our customer support is available 24/7 on WhatsApp at +92 319 5179084. You can also message us on our social media channels for assistance.</p>
             </div>
           </div>
@@ -2045,28 +1563,28 @@ document.addEventListener('DOMContentLoaded', function() {
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section bg-gray-900">
+    <section id="contact" class="section bg-white">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">CONTACT US</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out to us for orders, support, or any questions</p>
         
-        <div class="max-w-md mx-auto bg-black p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+        <div class="max-w-md mx-auto bg-lightbg p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
           <div class="mb-6">
             <h3 class="text-xl font-bold mb-4">Business Hours</h3>
-            <p class="text-gray-300">24/7 Support Available</p>
+            <p class="text-gray-600">24/7 Support Available</p>
           </div>
           
           <div class="mb-6">
             <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-            <p class="text-gray-300 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
-            <p class="text-gray-300"><i class="fa-solid fa-envelope text-red-500 mr-2"></i> Email: <strong>info@growzio.com</strong></p>
+            <p class="text-gray-600 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
+            <p class="text-gray-600"><i class="fa-solid fa-envelope text-primary mr-2"></i> Email: <strong>info@growzio.com</strong></p>
           </div>
           
           <div>
             <h3 class="text-xl font-bold mb-4">Follow Us</h3>
             <div class="flex justify-center gap-6 text-2xl">
               <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
-              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-red-500 hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
+              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-primary hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
               <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
               <a href="#" class="text-blue-400 hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
               <a href="#" class="text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-twitter"></i></a>
@@ -2077,60 +1595,59 @@ document.addEventListener('DOMContentLoaded', function() {
     </section>
 
     <!-- Privacy -->
-    <section id="privacy" class="section">
+    <section id="privacy" class="section bg-lightbg">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">PRIVACY POLICY</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">We value your privacy and security</p>
         
-        <div class="max-w-3xl mx-auto text-left bg-gray-900 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="300">
-          <p class="text-gray-300 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
+        <div class="max-w-3xl mx-auto text-left bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-gray-600 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
           
-          <p class="text-gray-300 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
+          <p class="text-gray-600 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
           
-          <p class="text-gray-300">We use secure encryption protocols to protect your data and ensure that your shopping experience is safe and secure. If you have any questions about our privacy practices, please contact us via WhatsApp.</p>
+          <p class="text-gray-600">We use secure encryption protocols to protect your data and ensure that your shopping experience is safe and secure. If you have any questions about our privacy practices, please contact us via WhatsApp.</p>
           
           <div class="mt-6">
-            <a href="#" class="text-red-500 font-semibold">Read Full Privacy Policy →</a>
+            <a href="#" class="text-primary font-semibold">Read Full Privacy Policy →</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-12 mt-16 border-t border-red-600">
+    <footer class="bg-secondary text-gray-200 py-12 mt-16 border-t border-primary">
       <div class="container">
         <div class="grid md:grid-cols-4 gap-8">
           <div>
             <h3 class="text-white text-lg font-bold mb-4">GROWZIO</h3>
             <p class="mb-4">Your trusted source for premium digital services in Pakistan at affordable prices.</p>
             <div class="flex gap-4">
-              <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-twitter"></i></a>
-              <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-instagram"></i></a>
-              <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-tiktok"></i></a>
             </div>
           </div>
           
           <div>
             <h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3>
             <ul class="space-y-2">
-              <li><a href="#home" class="text-gray-400 hover:text-red-500">Home</a></li>
-              <li><a href="#apps" class="text-gray-400 hover:text-red-500">Premium Apps</a></li>
-              <li><a href="#vpns" class="text-gray-400 hover:text-red-500">VPN Services</a></li>
-              <li><a href="#iptv" class="text-gray-400 hover:text-red-500">IPTV</a></li>
-              <li><a href="#games" class="text-gray-400 hover:text-red-500">Gaming</a></li>
-              <li><a href="#bundles" class="text-gray-400 hover:text-red-500">Exclusive Bundles</a></li>
+              <li><a href="#home" class="text-gray-300 hover:text-primary">Home</a></li>
+              <li><a href="#apps" class="text-gray-300 hover:text-primary">Premium Apps</a></li>
+              <li><a href="#iptv" class="text-gray-300 hover:text-primary">IPTV</a></li>
+              <li><a href="#games" class="text-gray-300 hover:text-primary">Gaming</a></li>
+              <li><a href="#bundles" class="text-gray-300 hover:text-primary">Exclusive Bundles</a></li>
             </ul>
           </div>
           
           <div>
             <h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3>
             <ul class="space-y-2">
-              <li><a href="#contact" class="text-gray-400 hover:text-red-500">Contact Us</a></li>
-              <li><a href="#faq" class="text-gray-400 hover:text-red-500">FAQ</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-red-500">Terms of Service</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-red-500">Refund Policy</a></li>
-              <li><a href="#privacy" class="text-gray-400 hover:text-red-500">Privacy Policy</a></li>
+              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact Us</a></li>
+              <li><a href="#faq" class="text-gray-300 hover:text-primary">FAQ</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary">Terms of Service</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary">Refund Policy</a></li>
+              <li><a href="#privacy" class="text-gray-300 hover:text-primary">Privacy Policy</a></li>
             </ul>
           </div>
           
@@ -2138,13 +1655,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3>
             <p class="mb-4">Subscribe to get special offers and service updates</p>
             <form class="flex flex-col gap-2">
-              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white">
-              <button type="submit" class="btn">Subscribe</button>
+              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-secondary-dark border border-gray-600 text-white placeholder-gray-400">
+              <button type="submit" class="btn bg-primary hover:bg-primary-dark">Subscribe</button>
             </form>
           </div>
         </div>
         
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <div class="border-t border-gray-600 mt-8 pt-8 text-center">
           <p>© 2025 GROWZIO. All rights reserved.</p>
         </div>
       </div>
@@ -2163,22 +1680,8 @@ document.addEventListener('DOMContentLoaded', function() {
 const apps=[
   {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark"},
   {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools"},
-  {name:"YouTube Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW6i55JlZERhJXLCzwqezFIbdEkGyM3HUA0A&s", desc: "Ad-free videos, background play, and YouTube Music included"},
-  {name:"Spotify Premium",img:"https://spotiffyapk.com/wp-content/uploads/2025/05/Spotify-Premium-APK-Logo.webp", desc: "Ad-free music listening, offline downloads, and high quality audio"},
   {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access"},
   {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features"},
-  {name:"Apple Music",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCILiYSmQG4bavERxrdjOyAfH2CdF3ipqazw&s", desc: "Over 100 million songs ad-free with offline listening"},
-  {name:"Grammarly Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8y6wi5Tg40IDq9eMNJuPOKcuw8FGNKloTiw&s", desc: "Advanced grammar checking, plagiarism detection, and writing suggestions"},
-  {name:"ChatGPT Plus",img:"https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg", desc: "Access to GPT-4, faster response times, and priority access to new features"},
-];
-
-const vpns=[
-  {name:"ExpressVPN",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhbWyQYlMqtyBpforqHJtCKefrJQo2yMm0g&s", desc: "High-speed VPN with 3000+ servers in 94 countries"},
-  {name:"NordVPN",img:"https://play-lh.googleusercontent.com/zJ3ysMhOnrgMgkxWibuHu_MlzfnpM96mriUfm8f898BMnDFmXa9peQvIaClA3KuBeZk", desc: "Advanced security with double VPN and onion over VPN"},
-  {name:"ProtonVPN",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMux1dIqipWRrhPHD9W_WpEcIOHn6GWnRSkg&s", desc: "Secure core architecture and high-speed Swiss VPN"},
-  {name:"CyberGhost",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OVKexwiii2foQ25ww-rdU9PRHZbJ2dPPqw&s", desc: "User-friendly VPN with optimized servers for streaming"},
-  {name:"Surfshark",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjcfR2uO4YmKI6kZaEatRJiWwRCNdM5vTDxw&s", desc: "Unlimited device connections with cleanweb ad blocking"},
-  {name:"IPVanish",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKQ6Th8Et7VpZBUjOzVezAooBEfHsG_-ZuXP1oNXoT3pvZwtCsHSjfdMjFZ3SLPYLlfDnmQx0zHOhBX9mcJm3j9UNIaJZTBQQrl5Nr6rQS53f-NnaUOJPEo_FHJWwchLNETji_oEqsGR2kl1FA7jEv8XHtbBJ28tW36DTfupAEAw9ihEqt8xHxralT6eU/s320/IPVanish_VPN_logo.png", desc: "Unlimited bandwidth and anonymous browsing with high-speed connections"},
 ];
 
 const iptv=[
@@ -2202,7 +1705,6 @@ function getDiscountedPrice(originalPrice) {
 
 function productDescription(category){
   if(category==='apps') return 'Premium subscription with full features access';
-  if(category==='vpns') return 'High-speed VPN with unlimited bandwidth';
   if(category==='iptv') return '10,000+ channels & VOD with 4K support';
   return 'Instant delivery with secure transaction';
 }
@@ -2214,19 +1716,19 @@ function renderProducts(list,containerId,category){
     const originalPrice=500+i*100;
     const discountedPrice=getDiscountedPrice(originalPrice);
     const card=document.createElement('div');
-    card.className='bg-gray-950 rounded-xl border border-red-600 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-red h-full flex flex-col';
+    card.className='bg-white rounded-xl border border-gray-200 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-orange h-full flex flex-col shadow-md';
     card.setAttribute('data-aos', 'fade-up');
     card.setAttribute('data-aos-delay', (i % 4) * 100);
     card.innerHTML=`
-      <img src='${item.img}' alt='${item.name} subscription Pakistan' class='rounded mb-3 h-32 w-full object-contain bg-black p-2 no-select' oncontextmenu="return false">
-      <h3 class='font-bold mb-2 line-clamp-2 text-white no-select'>${item.name}</h3>
-      <p class='text-gray-400 text-sm mb-3 flex-grow no-select'>${item.desc}</p>
+      <img src='${item.img}' alt='${item.name} subscription Pakistan' class='rounded mb-3 h-32 w-full object-contain bg-white p-2 no-select' oncontextmenu="return false">
+      <h3 class='font-bold mb-2 line-clamp-2 text-secondary no-select'>${item.name}</h3>
+      <p class='text-gray-600 text-sm mb-3 flex-grow no-select'>${item.desc}</p>
       <div class='flex items-center justify-between mt-auto'>
         <div class='no-select'>
           <span class='original-price'>${originalPrice} PKR</span>
-          <span class='font-semibold text-white'>${discountedPrice} PKR</span>
+          <span class='font-semibold text-dark'>${discountedPrice} PKR</span>
         </div>
-        <button class='add-to-cart bg-red-600 text-white text-sm px-3 py-1 rounded-lg hover:bg-red-700 transition no-select' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
+        <button class='add-to-cart bg-primary text-white text-sm px-3 py-1 rounded-lg hover:bg-primary-dark transition no-select' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
       </div>`;
     container.appendChild(card);
   });
@@ -2235,7 +1737,6 @@ function renderProducts(list,containerId,category){
 // Render all products when page loads
 document.addEventListener('DOMContentLoaded', function() {
   renderProducts(apps,'apps-list','apps');
-  renderProducts(vpns,'vpns-list','vpns');
   renderProducts(iptv,'iptv-list','iptv');
   renderProducts(games,'games-list','games');
   
@@ -2306,16 +1807,16 @@ function openCartModal(){
   let sum=0;
   
   if(cart.length === 0) {
-    items.innerHTML = '<p class="text-center text-gray-400 py-4">Your cart is empty</p>';
+    items.innerHTML = '<p class="text-center text-gray-500 py-4">Your cart is empty</p>';
   } else {
     cart.forEach((c,idx)=>{ 
       sum+=c.price; 
       items.innerHTML+=`
-        <div class="flex justify-between items-center border-b border-gray-700 pb-2">
+        <div class="flex justify-between items-center border-b border-gray-300 pb-2">
           <p class="no-select">${idx+1}. ${c.name}</p>
           <div class="flex items-center">
             <span class="no-select">${c.price} PKR</span>
-            <button class="ml-2 text-red-500 remove-item no-select" data-index="${idx}">
+            <button class="ml-2 text-primary remove-item no-select" data-index="${idx}">
               <i class="fa-solid fa-trash"></i>
             </button>
           </div>
@@ -2600,211 +2101,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* -------------------------
-   Chatbot Logic
-   ------------------------- */
-document.addEventListener('DOMContentLoaded', function() {
-  const chatbotToggle = document.getElementById('chatbot-toggle');
-  const chatbotContainer = document.getElementById('chatbot-container');
-  const chatbotClose = document.getElementById('chatbot-close');
-  const chatbotMessages = document.getElementById('chatbot-messages');
-  const chatbotInput = document.getElementById('chatbot-input');
-  const chatbotSend = document.getElementById('chatbot-send');
-  
-  // Toggle chatbot visibility
-  chatbotToggle.addEventListener('click', function() {
-    chatbotContainer.classList.toggle('open');
-  });
-  
-  chatbotClose.addEventListener('click', function() {
-    chatbotContainer.classList.remove('open');
-  });
-  
-  // Send message function
-  function sendMessage() {
-    const message = chatbotInput.value.trim();
-    if (message === '') return;
-    
-    // Add user message to chat
-    addMessage(message, 'user');
-    chatbotInput.value = '';
-    
-    // Show typing indicator
-    showTypingIndicator();
-    
-    // Process message and generate response
-    setTimeout(() => {
-      removeTypingIndicator();
-      const response = generateResponse(message);
-      addMessage(response, 'bot');
-    }, 1000);
-  }
-  
-  // Send message on button click
-  chatbotSend.addEventListener('click', sendMessage);
-  
-  // Send message on Enter key
-  chatbotInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  });
-  
-  // Quick reply buttons
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('quick-reply')) {
-      const message = e.target.dataset.message;
-      chatbotInput.value = message;
-      sendMessage();
-    }
-  });
-  
-  // Add message to chat
-  function addMessage(text, sender) {
-    const messageElement = document.createElement('div');
-    messageElement.className = `message ${sender}-message`;
-    messageElement.textContent = text;
-    
-    // Add quick replies for bot messages
-    if (sender === 'bot') {
-      const quickReplies = generateQuickReplies(text);
-      if (quickReplies) {
-        const quickRepliesContainer = document.createElement('div');
-        quickRepliesContainer.className = 'quick-replies';
-        quickReplies.forEach(reply => {
-          const button = document.createElement('button');
-          button.className = 'quick-reply';
-          button.textContent = reply.text;
-          button.dataset.message = reply.message;
-          quickRepliesContainer.appendChild(button);
-        });
-        messageElement.appendChild(quickRepliesContainer);
-      }
-    }
-    
-    chatbotMessages.appendChild(messageElement);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-  }
-  
-  // Show typing indicator
-  function showTypingIndicator() {
-    const typingElement = document.createElement('div');
-    typingElement.className = 'typing-indicator';
-    typingElement.id = 'typing-indicator';
-    typingElement.innerHTML = `
-      <div class="typing-dot"></div>
-      <div class="typing-dot"></div>
-      <div class="typing-dot"></div>
-    `;
-    chatbotMessages.appendChild(typingElement);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-  }
-  
-  // Remove typing indicator
-  function removeTypingIndicator() {
-    const typingElement = document.getElementById('typing-indicator');
-    if (typingElement) {
-      typingElement.remove();
-    }
-  }
-  
-  // Generate response based on user input
-  function generateResponse(message) {
-    const lowerMessage = message.toLowerCase();
-    
-    // Greetings
-    if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey')) {
-      return "Hello! 👋 I'm your Growzio assistant. How can I help you today?";
-    }
-    
-    // Services
-    if (lowerMessage.includes('service') || lowerMessage.includes('product') || lowerMessage.includes('offer')) {
-      return "We offer a wide range of digital services including:\n\n🔥 Premium Apps: Netflix, Spotify, YouTube Premium, Canva Pro, and more\n🔒 VPN Services: ExpressVPN, NordVPN, Surfshark, and others\n📺 IPTV: Rolex TV, Bos TV, Zain TV with 10,000+ channels\n🎮 Gaming: PUBG UC, Free Fire Diamonds, and game top-ups\n💥 Exclusive Bundles: Editing packs, software bundles, and more\n\nWhich service are you interested in?";
-    }
-    
-    // Payment methods
-    if (lowerMessage.includes('payment') || lowerMessage.includes('pay') || lowerMessage.includes('how to buy')) {
-      return "We accept multiple payment methods for your convenience:\n\n💳 JazzCash: Send payment to 03295478732 (Khairunisa)\n💳 Easypaisa: Send payment to 03325982480 (Khairunisa)\n🔗 Binance: Pay using crypto to UID 14245485\n\nAfter payment, simply send the screenshot to our WhatsApp at +92 319 5179084 for instant delivery!";
-    }
-    
-    // Discounts
-    if (lowerMessage.includes('discount') || lowerMessage.includes('offer') || lowerMessage.includes('sale')) {
-      return "🔥 We currently have a SPECIAL 30% OFF on all services! This limited-time offer is ending soon, so don't miss out. All our products are already priced lower than market rates, and with this discount, you're getting the best deal in Pakistan!";
-    }
-    
-    // Delivery time
-    if (lowerMessage.includes('delivery') || lowerMessage.includes('time') || lowerMessage.includes('how long')) {
-      return "⏰ We provide INSTANT delivery! Once your payment is confirmed, you'll receive your product credentials within minutes. We're available 24/7 to ensure you get your digital services without any delay.";
-    }
-    
-    // Support
-    if (lowerMessage.includes('support') || lowerMessage.includes('help') || lowerMessage.includes('contact')) {
-      return "📞 Our customer support is available 24/7 on WhatsApp at +92 319 5179084. You can message us for:\n- Product inquiries\n- Payment assistance\n- Technical support\n- Order tracking\n- Refund requests\n\nWe're here to help you anytime!";
-    }
-    
-    // Warranty
-    if (lowerMessage.includes('warranty') || lowerMessage.includes('guarantee') || lowerMessage.includes('genuine')) {
-      return "✅ All our products come with a 100% genuineness guarantee! We provide warranty on all subscriptions:\n\n- App subscriptions: Full warranty period\n- VPN services: Complete duration warranty\n- IPTV: Stable service guarantee\n- Gaming: Instant delivery guarantee\n\nIf you face any issues, we provide replacements or refunds!";
-    }
-    
-    // Specific products
-    if (lowerMessage.includes('netflix')) {
-      return "🎬 Netflix Premium: Enjoy 4K streaming on up to 4 devices simultaneously. We offer personal and shared accounts with full warranty. Current discounted price: 350 PKR/month (regularly 500 PKR).";
-    }
-    
-    if (lowerMessage.includes('spotify')) {
-      return "🎵 Spotify Premium: Ad-free music listening, offline downloads, and high-quality audio. Personal accounts with warranty. Current discounted price: 300 PKR/month (regularly 429 PKR).";
-    }
-    
-    if (lowerMessage.includes('expressvpn') || lowerMessage.includes('vpn')) {
-      return "🔒 ExpressVPN: High-speed VPN with 3000+ servers in 94 countries. Best for streaming, privacy, and bypassing restrictions. Current discounted price: 1200 PKR/year (regularly 1700 PKR).";
-    }
-    
-    if (lowerMessage.includes('iptv')) {
-      return "📺 IPTV Services: We offer Rolex TV, Bos TV, and Zain TV with 10,000+ channels, VOD, and 4K support. Stable connections with catch-up features. Prices start from 1000 PKR/year.";
-    }
-    
-    if (lowerMessage.includes('pubg') || lowerMessage.includes('uc')) {
-      return "🎮 PUBG UC: Get UC for PUBG Mobile at best rates. Instant delivery after payment. Various packages available starting from 100 PKR.";
-    }
-    
-    // Default response
-    return "I'm here to help you with Growzio's services! You can ask me about:\n- Our products and services\n- Payment methods\n- Current discounts\n- Delivery time\n- Warranty information\n- Technical support\n\nWhat would you like to know?";
-  }
-  
-  // Generate quick replies based on context
-  function generateQuickReplies(lastMessage) {
-    const lowerMessage = lastMessage.toLowerCase();
-    
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return [
-        { text: 'Services', message: 'Tell me about your services' },
-        { text: 'Payment', message: 'How to make payment' },
-        { text: 'Discounts', message: 'Do you offer discounts?' }
-      ];
-    }
-    
-    if (lowerMessage.includes('service') || lowerMessage.includes('product')) {
-      return [
-        { text: 'Netflix', message: 'Tell me about Netflix' },
-        { text: 'Spotify', message: 'Tell me about Spotify' },
-        { text: 'VPN', message: 'Tell me about VPN services' },
-        { text: 'Payment', message: 'How to make payment' }
-      ];
-    }
-    
-    if (lowerMessage.includes('payment')) {
-      return [
-        { text: 'JazzCash', message: 'JazzCash payment details' },
-        { text: 'Easypaisa', message: 'Easypaisa payment details' },
-        { text: 'Support', message: 'Contact support' }
-      ];
-    }
-    
-    return null;
-  }
-});
-
-/* -------------------------
    Code Protection
    ------------------------- */
 // Disable right-click
@@ -2839,6 +2135,97 @@ document.querySelectorAll('img').forEach(img => {
     e.preventDefault();
     return false;
   });
+});
+
+/* Review Form Functionality */
+document.addEventListener('DOMContentLoaded', function() {
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewsList = document.getElementById('reviewsList');
+  const successMessage = document.getElementById('successMessage');
+  
+  // Load existing reviews from localStorage
+  loadReviews();
+  
+  // Handle form submission
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const product = document.getElementById('product').value;
+    const rating = document.getElementById('rating').value;
+    const reviewText = document.getElementById('reviewText').value;
+    
+    // Create review object
+    const review = {
+      username,
+      product,
+      rating,
+      reviewText,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      id: Date.now() // Add unique ID for each review
+    };
+    
+    // Add to all reviews list
+    saveReviewToAll(review);
+    
+    // Add review to the page
+    addReviewToPage(review);
+    
+    // Show success message
+    successMessage.style.display = 'block';
+    
+    // Reset form
+    reviewForm.reset();
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  });
+  
+  function saveReviewToAll(review) {
+    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    reviews.push(review);
+    localStorage.setItem('allReviews', JSON.stringify(reviews));
+  }
+  
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    
+    if (reviews.length === 0) {
+      reviewsList.innerHTML = '<div class="review-item"><div class="review-text">No reviews yet. Be the first to review!</div></div>';
+      return;
+    }
+    
+    // Show reviews in reverse chronological order
+    reviews.reverse().forEach(review => {
+      addReviewToPage(review);
+    });
+  }
+  
+  function addReviewToPage(review) {
+    const reviewItem = document.createElement('div');
+    reviewItem.classList.add('review-item');
+    
+    // Convert rating to stars
+    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+    
+    reviewItem.innerHTML = `
+      <div class="review-header">
+        <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
+        <span class="rating">${stars}</span>
+      </div>
+      <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
+      ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
+      <div class="review-meta">
+        <span><i class="far fa-calendar"></i> ${review.date}</span>
+        <span><i class="far fa-clock"></i> ${review.time}</span>
+      </div>
+    `;
+    
+    reviewsList.prepend(reviewItem);
+  }
 });
 
 /* Init cart badge */
