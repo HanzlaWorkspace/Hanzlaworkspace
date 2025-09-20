@@ -595,7 +595,7 @@
       border-top: 2px solid var(--primary);
     }
     
-    /* Exclusive Bundles Section Styles */
+    /* Bundles Section Styles */
     .bundles-header {
       text-align: center;
       margin-bottom: 50px;
@@ -608,7 +608,6 @@
       font-size: 3.5rem;
       color: var(--primary);
       margin-bottom: 15px;
-      text-shadow: 0 0 20px rgba(204, 85, 0, 0.7);
       letter-spacing: 2px;
     }
     
@@ -787,6 +786,179 @@
       }
     }
     
+    /* Books Section Styles */
+    .books-header {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .books-title {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+    
+    .books-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .book-card {
+      background: linear-gradient(145deg, #F5E6F7, #E8C4F0);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s, box-shadow 0.4s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(204, 85, 0, 0.3);
+    }
+    
+    .book-product-container {
+      width: 100%;
+      height: 320px;
+      perspective: 1200px;
+      margin-bottom: 20px;
+    }
+    
+    .book-product {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .book-product-front, .book-product-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    
+    .book-product-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(45deg, var(--secondary), #0080A0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      text-align: left;
+      color: white;
+    }
+    
+    .book-product-back h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-align: center;
+    }
+    
+    .book-product-back ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .book-product-back li {
+      font-size: 0.9rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    
+    .book-product-back p {
+      font-size: 1rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    .book-product img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .book-card h2 {
+      font-size: 1.6rem;
+      margin: 15px 0;
+      color: var(--secondary);
+    }
+    
+    .book-price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .book-original-price {
+      font-size: 1.1rem;
+      color: #777;
+      text-decoration: line-through;
+    }
+    
+    .book-sale-price {
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .book-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, var(--primary), #E3712A);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(204, 85, 0, 0.4);
+    }
+    
+    .book-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(204, 85, 0, 0.6);
+      background: linear-gradient(45deg, #E3712A, var(--primary));
+    }
+    
+    .book-card.active .book-product {
+      animation: rotate3d 15s linear infinite;
+    }
+    
     /* Dropdown styling */
     select {
       appearance: none;
@@ -814,16 +986,19 @@
     }
     
     @media (max-width: 768px) {
-      .bundles-grid {
+      .bundles-grid,
+      .books-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 25px;
       }
       
-      .bundles-title {
+      .bundles-title,
+      .books-title {
         font-size: 2.5rem;
       }
       
-      .bundle-product-container {
+      .bundle-product-container,
+      .book-product-container {
         height: 280px;
       }
       
@@ -960,7 +1135,7 @@
   <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
     <div class="container py-3 flex items-center justify-between">
       <a href="#home" class="font-extrabold text-xl text-white flex items-center no-select">
-        <span class="text-primary mr-1">🔥</span> 𝒢𝓇𝑜𝓌𝓏𝒾𝑜
+        <span class="text-primary mr-1">🔥</span> GROWZIO
       </a>
 
       <!-- Desktop Nav -->
@@ -969,9 +1144,9 @@
         <a href="#about" class="nav-link hover:text-primary no-select">About</a>
         <a href="#apps" class="nav-link hover:text-primary no-select">Premium Apps</a>
         <a href="#iptv" class="nav-link hover:text-primary no-select">IPTV</a>
-        <a href="#tshirt-designs" class="nav-link hover:text-primary no-select">T-Shirts</a>
-        <a href="#games" class="nav-link hover:text-primary no-select">Courses</a>
-        <a href="#bundles" class="nav-link hover:text-primary no-select">Exclusive Bundles</a>
+        <a href="#games" class="nav-link hover:text-primary no-select">Games</a>
+        <a href="#bundles" class="nav-link hover:text-primary no-select">Bundles</a>
+        <a href="#books" class="nav-link hover:text-primary no-select">Books</a>
         <a href="#contact" class="nav-link hover:text-primary no-select">Contact</a>
       </nav>
 
@@ -1004,9 +1179,9 @@
         <a href="#about" class="py-2 nav-link no-select">About</a>
         <a href="#apps" class="py-2 nav-link no-select">Premium Apps</a>
         <a href="#iptv" class="py-2 nav-link no-select">IPTV</a>
-        <a href="#tshirt-designs" class="py-2 nav-link no-select">T-Shirts</a>
-        <a href="#games" class="py-2 nav-link no-select">Courses</a>
-        <a href="#bundles" class="py-2 nav-link no-select">Exclusive Bundles</a>
+        <a href="#games" class="py-2 nav-link no-select">Games</a>
+        <a href="#bundles" class="py-2 nav-link no-select">Bundles</a>
+        <a href="#books" class="py-2 nav-link no-select">Books</a>
         <a href="#contact" class="py-2 nav-link no-select">Contact</a>
       </div>
     </div>
@@ -1015,7 +1190,7 @@
   <!-- Offer Timer Banner -->
   <div class="offer-timer text-white text-center py-3 px-4">
     <div class="container flex flex-col md:flex-row items-center justify-center gap-3">
-      <span class="font-bold text-lg animate-pulse"> 30% OFF ON ALL SERVICES - ENDING SOON!</span>
+      <span class="font-bold text-lg animate-pulse">30% OFF ON ALL SERVICES - ENDING SOON!</span>
       <div class="flex items-center gap-2">
         <span>Ends in:</span>
         <div class="flex gap-2 items-center">
@@ -1062,7 +1237,6 @@
         <option value="jazzcash">JazzCash</option>
         <option value="easypaisa">Easypaisa</option>
         <option value="binance">Binance</option>
-        <option value="b">Credit Card</option>
       </select>
     </div>
 
@@ -1092,7 +1266,7 @@
     <header class="header bg-secondary">
       <div class="container mx-auto px-4 flex items-center justify-between py-3">
         <a href="#" class="font-extrabold text-xl text-white flex items-center">
-          <span class="text-primary mr-1">🔥</span> 🅶🆁🅾🆆🆉🅸🅾
+          <span class="text-primary mr-1">🔥</span> GROWZIO
         </a>
         
         <div class="flex items-center gap-4">
@@ -1146,29 +1320,6 @@
         </div>
         
         <!-- Easypaisa Option -->
-        <div class="payment-option">
-          <div class="payment-logo">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa">
-          </div>
-          <h3 class="font-bold text-lg mb-3 text-center">Easypaisa</h3>
-          
-          <div class="payment-details">
-            <div class="payment-detail-item">
-              <span>Name:</span>
-              <span class="font-medium">Khairunisa</span>
-            </div>
-            <div class="payment-detail-item">
-              <span>Number:</span>
-              <span class="font-medium">03325982480</span>
-            </div>
-          </div>
-          
-          <div class="payment-instruction">
-            <p class="text-sm">After making the payment, please send the screenshot to our WhatsApp for verification.</p>
-          </div>
-        </div>
-
-        <!-- Credit Card -->
         <div class="payment-option">
           <div class="payment-logo">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa">
@@ -1272,7 +1423,7 @@
         </div>
 
         <div class="mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-          <span class="font-bold text-primary">🔥 Special Limited Offer: 30% OFF on all services!</span>
+          <span class="font-bold text-primary">Special Limited Offer: 30% OFF on all services!</span>
         </div>
         <br>
         <div class="flex flex-col sm:flex-row justify-center gap-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
@@ -1349,237 +1500,19 @@
       </div>
     </section>
 
-    <!-- T-Shirt Designs Section -->
-    <section id="tshirt-designs" style="padding:60px 20px; background:#111;">
-      <style>
-        #tshirt-designs {
-          color: #fff;
-          font-family: Arial, sans-serif;
-        }
-
-        #tshirt-designs h1 {
-          text-align: center;
-          margin-bottom: 50px;
-          font-size: 32px;
-          color: #fff;
-        }
-
-        #tshirt-designs .tshirt-section {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 50px;
-          max-width: 1700px;
-          margin: 0 auto;
-        }
-
-        #tshirt-designs .tshirt-box {
-          perspective: 1000px;
-          text-align: center;
-          cursor: pointer;
-          padding: 20px;
-          border-radius: 16px;
-          background: rgba(0, 0, 0, 0.6);
-          box-shadow: 0 0 20px rgba(204, 85, 0, 0.6), 
-                      0 0 40px rgba(204, 85, 0, 0.4), 
-                      0 0 60px rgba(204, 85, 0, 0.2);
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        #tshirt-designs .tshirt-box:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 0 25px rgba(255, 140, 0, 0.9),
-                      0 0 50px rgba(255, 140, 0, 0.6),
-                      0 0 80px rgba(255, 140, 0, 0.4);
-        }
-
-        #tshirt-designs .tshirt-card {
-          width: 100%;
-          transform-style: preserve-3d;
-          transition: transform 1s;
-          position: relative;
-        }
-
-        #tshirt-designs .rotating .tshirt-card {
-          animation: autoRotate 10s linear infinite;
-        }
-
-        #tshirt-designs .tshirt-face {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          backface-visibility: hidden;
-          border-radius: 12px;
-          overflow: hidden;
-        }
-
-        #tshirt-designs .tshirt-face img {
-          width: 100%;
-          display: block;
-        }
-
-        #tshirt-designs .tshirt-back {
-          transform: rotateY(180deg);
-          background: #fff;
-        }
-
-        #tshirt-designs .tshirt-label {
-          margin-top: 320px;
-          font-weight: bold;
-          color: #fff;
-          font-size: 16px;
-        }
-
-        #tshirt-designs .button-group {
-          margin-top: 20px;
-        }
-
-        #tshirt-designs button {
-          margin: 5px;
-          padding: 12px 24px;
-          border: none;
-          background: #CC5500;
-          color: #fff;
-          border-radius: 8px;
-          cursor: pointer;
-          font-size: 15px;
-          font-weight: bold;
-          transition: background 0.3s;
-        }
-
-        #tshirt-designs button:hover {
-          background: #994200;
-        }
-
-        @keyframes autoRotate {
-          from { transform: rotateY(0deg); }
-          to { transform: rotateY(360deg); }
-        }
-      </style>
-
-      <h1>T-Shirt Designs</h1>
-
-      <div class="tshirt-section">
-        <!-- T-Shirt 1 -->
-        <div class="tshirt-box">
-          <div class="tshirt-card">
-            <div class="tshirt-face tshirt-front" onclick="toggleRotation(this, 'front')">
-              <img src="https://i.ibb.co/8L4rV99c/shirt1.png" alt="Front T-shirt Design 1">
-            </div>
-            <div class="tshirt-face tshirt-back" onclick="toggleRotation(this, 'back')">
-              <img src="https://i.ibb.co/Lz8Yk7YT/shirt3.png" alt="Back T-shirt Design 1">
-            </div>
-          </div>
-          <div class="tshirt-label">Design 1</div>
-          <div class="button-group">
-            <button class="add-to-cart" data-name="T-Shirt Design 1" data-price="1200">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- T-Shirt 2 -->
-        <div class="tshirt-box">
-          <div class="tshirt-card">
-            <div class="tshirt-face tshirt-front" onclick="toggleRotation(this, 'front')">
-              <img src="https://i.ibb.co/8L4rV99c/shirt1.png" alt="Front T-shirt Design 2">
-            </div>
-            <div class="tshirt-face tshirt-back" onclick="toggleRotation(this, 'back')">
-              <img src="https://i.ibb.co/Lz8Yk7YT/shirt3.png" alt="Back T-shirt Design 2">
-            </div>
-          </div>
-          <div class="tshirt-label">Design 2</div>
-          <div class="button-group">
-            <button class="add-to-cart" data-name="T-Shirt Design 2" data-price="1200">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- T-Shirt 3 -->
-        <div class="tshirt-box">
-          <div class="tshirt-card">
-            <div class="tshirt-face tshirt-front" onclick="toggleRotation(this, 'front')">
-              <img src="https://i.ibb.co/8L4rV99c/shirt1.png" alt="Front T-shirt Design 3">
-            </div>
-            <div class="tshirt-face tshirt-back" onclick="toggleRotation(this, 'back')">
-              <img src="https://i.ibb.co/Lz8Yk7YT/shirt3.png" alt="Back T-shirt Design 3">
-            </div>
-          </div>
-          <div class="tshirt-label">Design 3</div>
-          <div class="button-group">
-            <button class="add-to-cart" data-name="T-Shirt Design 3" data-price="1200">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- T-Shirt 4 -->
-        <div class="tshirt-box">
-          <div class="tshirt-card">
-            <div class="tshirt-face tshirt-front" onclick="toggleRotation(this, 'front')">
-              <img src="https://i.ibb.co/8L4rV99c/shirt1.png" alt="Front T-shirt Design 4">
-            </div>
-            <div class="tshirt-face tshirt-back" onclick="toggleRotation(this, 'back')">
-              <img src="https://i.ibb.co/Lz8Yk7YT/shirt3.png" alt="Back T-shirt Design 4">
-            </div>
-          </div>
-          <div class="tshirt-label">Design 4</div>
-          <div class="button-group">
-            <button class="add-to-cart" data-name="T-Shirt Design 4" data-price="1200">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- T-Shirt 5 -->
-        <div class="tshirt-box">
-          <div class="tshirt-card">
-            <div class="tshirt-face tshirt-front" onclick="toggleRotation(this, 'front')">
-              <img src="https://i.ibb.co/8L4rV99c/shirt1.png" alt="Front T-shirt Design 5">
-            </div>
-            <div class="tshirt-face tshirt-back" onclick="toggleRotation(this, 'back')">
-              <img src="https://i.ibb.co/Lz8Yk7YT/shirt3.png" alt="Back T-shirt Design 5">
-            </div>
-          </div>
-          <div class="tshirt-label">Design 5</div>
-          <div class="button-group">
-            <button class="add-to-cart" data-name="T-Shirt Design 5" data-price="1200">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        function toggleRotation(faceElement, side) {
-          const box = faceElement.closest(".tshirt-box");
-          const card = box.querySelector(".tshirt-card");
-
-          if (box.classList.contains("rotating")) {
-            box.classList.remove("rotating");
-            if (side === "front") {
-              card.style.transform = "rotateY(0deg)";
-            } else if (side === "back") {
-              card.style.transform = "rotateY(180deg)";
-            }
-            return;
-          }
-
-          document.querySelectorAll("#tshirt-designs .tshirt-box").forEach(b => {
-            b.classList.remove("rotating");
-            b.querySelector(".tshirt-card").style.transform = "rotateY(0deg)";
-          });
-
-          box.classList.add("rotating");
-          card.style.transform = "";
-        }
-      </script>
-    </section>
-
     <section id="games" class="section bg-white">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">OUR COURSES</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Instant Dilivery On Your Personal Email</p>
+        <h2 class="section-title" data-aos="fade-up">GAMES SERVICES</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Instant game top-ups & currency for your favorite mobile games</p>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
       </div>
     </section>
 
-    <!-- Exclusive Bundles Section -->
+    <!-- Bundles Section -->
     <section id="bundles" class="section bg-lightbg">
       <div class="container">
         <div class="bundles-header" data-aos="fade-up">
-          <h1 class="bundles-title">🔥 OUR EXCLUSIVE BUNDLES 🔥</h1>
+          <h1 class="bundles-title">OUR BUNDLES</h1>
           <p class="bundles-subtitle">Premium digital resources at unbeatable prices for creators and developers</p>
         </div>
         
@@ -1612,7 +1545,7 @@
             <button class="bundle-btn add-to-cart" data-name="200 GB Editing Pack" data-price="300">Add to Cart</button>
           </div>
 
-          <!-- Bundle 2 -->
+          <!-- Bundle 4 -->
           <div class="bundle-card" data-aos="fade-up" data-aos-delay="400">
             <div class="bundle-product-container">
               <div class="bundle-product">
@@ -1639,15 +1572,141 @@
             </div>
             <button class="bundle-btn add-to-cart" data-name="3K+ Fitness Posts" data-price="300">Add to Cart</button>
           </div>
-        </section>
+
+          <!-- Bundle 6 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3oYxjeetK-3SLStW5tuoI0w6ZeJowBNGHBryX0hmZFgXikClQFU-Mx8WpUv8pbK7O73oUfvelUYZHHVnbAaHfMuMF4z7cBeabzzKku8Skq4mP3M4O3ly9O9-yILk_3eGi6g5J-sNrmi3aRYe9vpsJredNsZ3kBZyEKLJlOUlcw_Ge5mfgyjEOGNz1QMc/s320/HQ%20Qoutes.png" alt="HQ Quotes Images">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>1000+ high-quality quote images</li>
+                    <li>Inspirational content library</li>
+                    <li>Motivational graphics</li>
+                    <li>Multiple style variations</li>
+                    <li>Social media optimized formats</li>
+                  </ul>
+                  <p>Inspire your audience with beautiful quote graphics!</p>
+                </div>
+              </div>
+            </div>
+            <h2>HQ Quotes Images</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 5400</div>
+              <div class="bundle-sale-price">PKR 300</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="HQ Quotes Images" data-price="300">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books" class="section bg-white">
+      <div class="container">
+        <div class="books-header" data-aos="fade-up">
+          <h1 class="books-title">DIGITAL BOOKS</h1>
+          <p class="books-subtitle">Premium eBooks and digital resources for learning and personal development</p>
+        </div>
+        
+        <div class="books-grid">
+          <!-- Book 1 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://m.media-amazon.com/images/I/71QKQ9mwV7L._AC_UF1000,1000_QL80_.jpg" alt="Web Development Mastery">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Complete web development guide</li>
+                    <li>HTML, CSS, JavaScript fundamentals</li>
+                    <li>Frontend & backend development</li>
+                    <li>Responsive design techniques</li>
+                    <li>Real-world project examples</li>
+                  </ul>
+                  <p>Master web development from beginner to advanced level!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Web Development Mastery</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 2500</div>
+              <div class="book-sale-price">PKR 500</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Web Development Mastery" data-price="500">Add to Cart</button>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://m.media-amazon.com/images/I/61t7kc7JQxL._AC_UF1000,1000_QL80_.jpg" alt="Digital Marketing Guide">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Complete digital marketing strategies</li>
+                    <li>SEO optimization techniques</li>
+                    <li>Social media marketing guide</li>
+                    <li>Email marketing campaigns</li>
+                    <li>Analytics and performance tracking</li>
+                  </ul>
+                  <p>Learn to build effective digital marketing campaigns!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Digital Marketing Guide</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 3000</div>
+              <div class="book-sale-price">PKR 600</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Digital Marketing Guide" data-price="600">Add to Cart</button>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://m.media-amazon.com/images/I/71sBtM3Yi5L._AC_UF1000,1000_QL80_.jpg" alt="Python Programming">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Python programming fundamentals</li>
+                    <li>Data structures and algorithms</li>
+                    <li>Web development with Django/Flask</li>
+                    <li>Data analysis with Pandas</li>
+                    <li>Automation and scripting</li>
+                  </ul>
+                  <p>Become a Python expert with comprehensive guide!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Python Programming</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 2800</div>
+              <div class="book-sale-price">PKR 550</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Python Programming" data-price="550">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Customer Reviews Section -->
-    <section id="reviews" class="section bg-white">
+    <section id="reviews" class="section bg-lightbg">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">CUSTOMER REVIEWS</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">See what our customers are saying about our products and services</p>
         
-        <div class="bg-lightbg rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-white rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
           <div class="grid md:grid-cols-2 gap-8">
             <!-- Review Form -->
             <div class="review-form-container">
@@ -1679,17 +1738,15 @@
                       <option value="3K+ Fitness Posts">3K+ Fitness Posts</option>
                       <option value="HQ Quotes Images">HQ Quotes Images</option>
                     </optgroup>
+                    <optgroup label="Books">
+                      <option value="Web Development Mastery">Web Development Mastery</option>
+                      <option value="Digital Marketing Guide">Digital Marketing Guide</option>
+                      <option value="Python Programming">Python Programming</option>
+                    </optgroup>
                     <optgroup label="TV Services">
                       <option value="Rolex TV">Rolex TV</option>
                       <option value="Bos TV">Bos TV</option>
                       <option value="Zain TV">Zain TV</option>
-                    </optgroup>
-                    <optgroup label="T-Shirts">
-                      <option value="T-Shirt Design 1">T-Shirt Design 1</option>
-                      <option value="T-Shirt Design 2">T-Shirt Design 2</option>
-                      <option value="T-Shirt Design 3">T-Shirt Design 3</option>
-                      <option value="T-Shirt Design 4">T-Shirt Design 4</option>
-                      <option value="T-Shirt Design 5">T-Shirt Design 5</option>
                     </optgroup>
                   </select>
                 </div>
@@ -1728,7 +1785,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section bg-lightbg">
+    <section class="section bg-white">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our products and services</p>
@@ -1784,12 +1841,12 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section bg-white">
+    <section id="contact" class="section bg-lightbg">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">CONTACT US</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out to us for orders, support, or any questions</p>
         
-        <div class="max-w-md mx-auto bg-lightbg p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
           <div class="mb-6">
             <h3 class="text-xl font-bold mb-4">Business Hours</h3>
             <p class="text-gray-600">24/7 Support Available</p>
@@ -1816,12 +1873,12 @@
     </section>
 
     <!-- Privacy -->
-    <section id="privacy" class="section bg-lightbg">
+    <section id="privacy" class="section bg-white">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">PRIVACY POLICY</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">We value your privacy and security</p>
         
-        <div class="max-w-3xl mx-auto text-left bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+        <div class="max-w-3xl mx-auto text-left bg-lightbg p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
           <p class="text-gray-600 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
           
           <p class="text-gray-600 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
@@ -1856,9 +1913,9 @@
               <li><a href="#home" class="text-gray-300 hover:text-primary">Home</a></li>
               <li><a href="#apps" class="text-gray-300 hover:text-primary">Premium Apps</a></li>
               <li><a href="#iptv" class="text-gray-300 hover:text-primary">IPTV</a></li>
-              <li><a href="#tshirt-designs" class="text-gray-300 hover:text-primary">T-Shirts</a></li>
               <li><a href="#games" class="text-gray-300 hover:text-primary">Gaming</a></li>
-              <li><a href="#bundles" class="text-gray-300 hover:text-primary">Exclusive Bundles</a></li>
+              <li><a href="#bundles" class="text-gray-300 hover:text-primary">Bundles</a></li>
+              <li><a href="#books" class="text-gray-300 hover:text-primary">Books</a></li>
             </ul>
           </div>
           
@@ -1913,8 +1970,9 @@ const iptv=[
 ];
 
 const games=[
-  {name:"CRYPTO TRADING COURSE",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQ-9JvH7gQXx9h-D-_-CBwnWAD5MwJ9a3wj1xNm_M3jsB6j-1IoEs8PVEj23YLvpSnucRTrHVo77KoX24cyrf4x5YP7CMDekJuRyY5GjAwkwAa_yt-hVN9X07IuQDup9ukOnf5HNggV2NSKfbBTRWyVnt3484uM6Ooa9pzNAxo0X-OJAhuS1qGn-ldj5s/w612-h375/Generated%20Image%20September%2018,%202025%20-%208_29AM.png", desc: "Get UC for PUBG Mobile at best rates for skins and crates"},
-  {name:"CYBERSECURITY COURSE",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7SjTA8m8GQLMOsaIkmF5760LbjZLziPN_FIjcVI3HNxI3_3zUIf63xChvBfwSsbUo1bsdeOeFwy69qJ0ssqNXDPyo44mhTG6MEObdZJKjykJDOhdeQR3hfiLgBs8J441MSja6rXUeXYiCWOJ7WTlxNk-Xa18qP8RwBuIWqhkGhzi5_hB50Jxq2UAUgec/w539-h390/course%2020.png", desc: "Buy diamonds for Garena Free Fire to get characters and weapons"},
+  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates"},
+  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons"},
+  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games"},
 ];
 
 /* -------------------------
@@ -2218,7 +2276,7 @@ function updateTimer(){
   const timeLeft=endTime-now;
   if(timeLeft<=0){
     ['hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
-    document.querySelector('.offer-timer').innerHTML = '<div class="container py-2"><span class="font-bold">🔥 Offer has ended! New deals coming soon.</span></div>';
+    document.querySelector('.offer-timer').innerHTML = '<div class="container py-2"><span class="font-bold">Offer has ended! New deals coming soon.</span></div>';
     return;
   }
   const hours=Math.floor(timeLeft/(1000*60*60));
@@ -2309,11 +2367,22 @@ document.querySelectorAll('.faq-question').forEach(q=>{
    ------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
   const bundleCards = document.querySelectorAll('.bundle-card');
+  const bookCards = document.querySelectorAll('.book-card');
   
   bundleCards.forEach(card => {
     card.addEventListener('click', function() {
       // Remove active class from all cards
       bundleCards.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked card
+      this.classList.add('active');
+    });
+  });
+  
+  bookCards.forEach(card => {
+    card.addEventListener('click', function() {
+      // Remove active class from all cards
+      bookCards.forEach(c => c.classList.remove('active'));
       
       // Add active class to clicked card
       this.classList.add('active');
